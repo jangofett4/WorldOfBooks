@@ -1,0 +1,42 @@
+.div-center {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+
+/* unvisited link */
+
+a.no-links-visible:link {
+    color: black;
+    text-decoration: none;
+}
+
+
+/* visited link */
+
+a.no-links-visible:visited {
+    color: black;
+    text-decoration: none;
+}
+
+
+/* mouse over link */
+
+a.no-links-visible:hover {
+    color: black;
+    text-decoration: none;
+}
+
+
+/* selected link */
+
+a.no-links-visible:active {
+    color: black;
+    text-decoration: none;
+}
+
+.card-body {
+    max-height: 250px;
+    height: 250px;
+    overflow: hidden;
+}
