@@ -19,35 +19,14 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="index.php">
-            <img src="favicon.ico" width="30" height="30" alt="">
-        </a>
-        <a class="navbar-brand">World of Books</a>
-        <div class="input-group col-9">
-            <!-- <div class="input-group-prepend">
-                <span class="input-group-text"><span class="fa fa-search"></span></span>
-            </div> -->
-            <input type="text" class="form-control mr-sm-2" id="navsearch" onkeyup="ajaxsearchbook(this.value)" placeholder="Kitap ya da Yazar (örn. Harry Potter)">
-            <span class="input-group-btn">
-                <button class="btn btn-outline-success" type="submit"><span class="fa fa-search"></span></button>
-            </span>
-        </div>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-                <a class="nav-item nav-link active" href="loginpage.php">Giriş Yap <span class="sr-only">(current)</span></a>
-                <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
-                    Sepet
-                </button>
-            </div>
-        </div>
-    </nav>
+    <?php include "templates/nav.php" ?>
+    
     <div class="container" style="margin-top: 50px">
 
         <div class="row">
             <div class="col-4 border  p-4 m-1">
                 <div class="group-row text-center mb-2">
-                    <span class="text-center"> Zaten Üyeyim! <a href="loginpage.php" style="text-decoration: underline">Giriş Yap</a></span>
+                    <span class="text-center"> Zaten Üyeyim! <a href="pageLogin.php" style="text-decoration: underline">Giriş Yap</a></span>
                 </div>
                 <form>
                     <div class="form-group row">

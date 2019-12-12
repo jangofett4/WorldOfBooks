@@ -19,33 +19,12 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="index.php">
-            <img src="favicon.ico" width="30" height="30" alt="">
-        </a>
-        <a class="navbar-brand">World of Books</a>
-        <div class="input-group col-9">
-            <!-- <div class="input-group-prepend">
-                <span class="input-group-text"><span class="fa fa-search"></span></span>
-            </div> -->
-            <input type="text" class="form-control mr-sm-2" id="navsearch" onkeyup="ajaxsearchbook(this.value)" placeholder="Kitap ya da Yazar (örn. Harry Potter)">
-            <span class="input-group-btn">
-                <button class="btn btn-outline-success" type="submit"><span class="fa fa-search"></span></button>
-            </span>
-        </div>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-                <a class="nav-item nav-link active" href="loginpage.php">Giriş Yap <span class="sr-only">(current)</span></a>
-                <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
-                    Sepet
-                </button>
-            </div>
-        </div>
-    </nav>
+    <?php include "templates/nav.php" ?>
+
     <div class="container" style="margin-top: 50px">
 
         <div class="row">
-            <div class="col border text-center p-5 m-1" >
+            <div class="col border text-center p-5 m-1">
                 <h1 class="display-5">Üye Girişi</h1>
                 <form>
                     <div class="form-group">
@@ -61,8 +40,10 @@
                 </form>
             </div>
             <div class="col border text-center p-5 m-1">
-                <div class="col"><h1 class="display-5">Üye Ol</h1><span class="fas fa-user-plus fa-10x p-4" style="color: rgb(220,220,220)"></span></div>
-                <div class="col"><a href="registerpage.php"><button type="submit" class="btn btn-secondary px-5" >Üye Ol</button></a></div>
+                <div class="col">
+                    <h1 class="display-5">Üye Ol</h1><span class="fas fa-user-plus fa-10x p-4" style="color: rgb(220,220,220)"></span>
+                </div>
+                <div class="col"><a href="pageRegister.php"><button type="submit" class="btn btn-secondary px-5">Üye Ol</button></a></div>
             </div>
         </div>
 

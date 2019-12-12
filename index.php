@@ -26,29 +26,8 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="index.php">
-            <img src="favicon.ico" width="30" height="30" alt="">
-        </a>
-        <a class="navbar-brand">World of Books</a>
-        <div class="input-group col-9">
-            <!-- <div class="input-group-prepend">
-                <span class="input-group-text"><span class="fa fa-search"></span></span>
-            </div> -->
-            <input type="text" class="form-control mr-sm-2" id="navsearch" onkeyup="ajaxsearchbook(this.value)" placeholder="Kitap ya da Yazar (örn. Harry Potter)">
-            <span class="input-group-btn">
-                <button class="btn btn-outline-success" type="submit"><span class="fa fa-search"></span></button>
-            </span>
-        </div>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-                <a class="nav-item nav-link active" href="loginpage.php">Giriş Yap <span class="sr-only">(current)</span></a>
-                <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
-                    Sepet
-                </button>
-            </div>
-        </div>
-    </nav>
+    <?php include "templates/nav.php" ?>
+
     <div class="container text-center" style="margin-top: 30px">
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
@@ -63,7 +42,7 @@
                 <div class="carousel-item">
                     <img class="d-block w-100" src="slider/nresim2.jpg" alt="Second slide" height="400px" style="background-image: url('slider/nresim2.jpg')">
                 </div>
-                <div class="carousel-item" >
+                <div class="carousel-item">
                     <img class="d-block w-100" src="slider/nresim3.jpg" alt="Third slide" height="400px">
                 </div>
             </div>
@@ -79,9 +58,9 @@
     </div>
     <div class="container " style="margin-top: 30px">
         <div class="row text-center justify-content-md-center">
-            <a class="no-links-visible" href="bookinfo.php">
+            <a class="no-links-visible" href="pageBookInfo.php">
                 <div class="col card mx-1" style="width: 17rem;">
-                    <div class="p-3"><img class="card-img-top border border-dark" src="slider/hp6.jpg" alt="Harry Potter ve Melez Prens" /></div>
+                    <div class="p-3"><img class="card-img-top border border-dark" src="slider/nhp6.jpg" alt="Harry Potter ve Melez Prens" /></div>
                     <div class="card-body">
                         <span class="fa fa-star checked"></span>
                         <span class="fa fa-star checked"></span>
@@ -95,9 +74,9 @@
                     </div>
                 </div>
             </a>
-            <a class="no-links-visible" href="bookinfo.php">
+            <a class="no-links-visible" href="pageBookInfo.php">
                 <div class="col card mx-1" style="width: 17rem;">
-                    <div class="p-3"><img class="card-img-top border border-dark" src="slider/hp7.jpg" alt="Harry Potter ve Ölüm Yadigarları"></div>
+                    <div class="p-3"><img class="card-img-top border border-dark" src="slider/hp77.jpg?" alt="Harry Potter ve Ölüm Yadigarları"></div>
                     <div class="card-body">
                         <span class="fa fa-star checked"></span>
                         <span class="fa fa-star checked"></span>
@@ -111,9 +90,9 @@
                     </div>
                 </div>
             </a>
-            <a class="no-links-visible" href="bookinfo.php">
+            <a class="no-links-visible" href="pageBookInfo.php">
                 <div class="col card mx-1" style="width: 17rem;">
-                    <div class="p-3"><img class="card-img-top border border-dark" src="slider/hp1.jpg" alt="Harry Potter ve Felsefe Taşı"></div>
+                    <div class="p-3"><img class="card-img-top border border-dark" src="slider/hp1.jpg?" alt="Harry Potter ve Felsefe Taşı"></div>
                     <div class="card-body">
                         <span class="fa fa-star checked"></span>
                         <span class="fa fa-star checked"></span>
@@ -127,9 +106,9 @@
                     </div>
                 </div>
             </a>
-            <a class="no-links-visible" href="bookinfo.php">
+            <a class="no-links-visible" href="pageBookInfo.php">
                 <div class="col card mx-1" style="width: 17rem;">
-                    <div class="p-3"><img class="card-img-top border border-dark" src="slider/hp4.jpg" alt="Harry Potter ve Ateş Kadehi"></div>
+                    <div class="p-3"><img class="card-img-top border border-dark" src="slider/nhp4.jpg?" alt="Harry Potter ve Ateş Kadehi"></div>
                     <div class="card-body">
                         <span class="fa fa-star checked"></span>
                         <span class="fa fa-star checked"></span>
@@ -145,9 +124,9 @@
             </a>
         </div>
         <div class="row text-center justify-content-md-center" style="margin-top: 10px">
-            <a class="no-links-visible" href="bookinfo.php">
+            <a class="no-links-visible" href="pageBookInfo.php">
                 <div class="col card mx-1" style="width: 17rem;">
-                    <div class="p-3"><img class="card-img-top border border-dark" src="slider/hp6.jpg" alt="Harry Potter ve Melez Prens"></div>
+                    <div class="p-3"><img class="card-img-top border border-dark" src="slider/nhp6.jpg?" alt="Harry Potter ve Melez Prens"></div>
                     <div class="card-body">
                         <span class="fa fa-star checked"></span>
                         <span class="fa fa-star checked"></span>
@@ -161,9 +140,9 @@
                     </div>
                 </div>
             </a>
-            <a class="no-links-visible" href="bookinfo.php">
+            <a class="no-links-visible" href="pageBookInfo.php">
                 <div class="col card mx-1" style="width: 17rem;">
-                    <div class="p-3"><img class="card-img-top border border-dark" src="slider/hp7.jpg" alt="Harry Potter ve Ölüm Yadigarları"></div>
+                    <div class="p-3"><img class="card-img-top border border-dark" src="slider/hp77.jpg?" alt="Harry Potter ve Ölüm Yadigarları"></div>
                     <div class="card-body">
                         <span class="fa fa-star checked"></span>
                         <span class="fa fa-star checked"></span>
@@ -177,9 +156,9 @@
                     </div>
                 </div>
             </a>
-            <a class="no-links-visible" href="bookinfo.php">
+            <a class="no-links-visible" href="pageBookInfo.php">
                 <div class="col card mx-1" style="width: 17rem;">
-                    <div class="p-3"><img class="card-img-top border border-dark" src="slider/hp1.jpg" alt="Harry Potter ve Felsefe Taşı"></div>
+                    <div class="p-3"><img class="card-img-top border border-dark" src="slider/hp1.jpg?" alt="Harry Potter ve Felsefe Taşı"></div>
                     <div class="card-body">
                         <span class="fa fa-star checked"></span>
                         <span class="fa fa-star checked"></span>
@@ -193,9 +172,9 @@
                     </div>
                 </div>
             </a>
-            <a class="no-links-visible" href="bookinfo.php">
+            <a class="no-links-visible" href="pageBookInfo.php">
                 <div class="col card mx-1" style="width: 17rem;">
-                    <div class="p-3"><img class="card-img-top border border-dark" src="slider/hp4.jpg" alt="Harry Potter ve Ateş Kadehi"></div>
+                    <div class="p-3"><img class="card-img-top border border-dark" src="slider/nhp4.jpg" alt="Harry Potter ve Ateş Kadehi"></div>
                     <div class="card-body">
                         <span class="fa fa-star checked"></span>
                         <span class="fa fa-star checked"></span>
