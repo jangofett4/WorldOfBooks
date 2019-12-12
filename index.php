@@ -11,6 +11,7 @@
             width: 100%;
             height: 400px;
             max-height: 400px !important;
+
         }
 
         .checked {
@@ -20,7 +21,7 @@
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/all.css">
     <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
-        <link rel="stylesheet" href="css/wob.css">
+    <link rel="stylesheet" href="css/wob.css">
     <script src="js/wobmain.js?"></script>
 </head>
 
@@ -57,13 +58,13 @@
             </ol>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img class="d-block w-100" src="slider/resim1.jpg" alt="First slide" height="400px">
+                    <img class="d-block w-100" src="slider/nresim1.jpg" alt="First slide" height="400px" style="background-image: url('slider/nresim1.jpg')">
                 </div>
                 <div class="carousel-item">
-                    <img class="d-block w-100" src="slider/resim2.jpg" alt="Second slide" height="400px">
+                    <img class="d-block w-100" src="slider/nresim2.jpg" alt="Second slide" height="400px" style="background-image: url('slider/nresim2.jpg')">
                 </div>
-                <div class="carousel-item">
-                    <img class="d-block w-100" src="slider/resim3.jpg" alt="Third slide" height="400px">
+                <div class="carousel-item" >
+                    <img class="d-block w-100" src="slider/nresim3.jpg" alt="Third slide" height="400px">
                 </div>
             </div>
             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -76,11 +77,11 @@
             </a>
         </div>
     </div>
-    <div class="container" style="margin-top: 30px">
-        <div class="row text-center">
+    <div class="container " style="margin-top: 30px">
+        <div class="row text-center justify-content-md-center">
             <a class="no-links-visible" href="bookinfo.php">
-                <div class="col card mr-sm-2 " style="width: 17rem;">
-                    <div class="p-3"><img class="card-img-top border border-dark" src="slider/hp6.jpg" alt="Harry Potter ve Melez Prens"/></div>
+                <div class="col card mx-1" style="width: 17rem;">
+                    <div class="p-3"><img class="card-img-top border border-dark" src="slider/hp6.jpg" alt="Harry Potter ve Melez Prens" /></div>
                     <div class="card-body">
                         <span class="fa fa-star checked"></span>
                         <span class="fa fa-star checked"></span>
@@ -88,15 +89,15 @@
                         <span class="fa fa-star"></span>
                         <span class="fa fa-star"></span>
                         <p class="card-text">Harry Potter ve Melez Prens</p>
-                        <p class="card-text" >J. K. Rowling </p>
+                        <p class="card-text">J. K. Rowling </p>
                         <p class="card-text">Kitabevi </p>
                         <p class="card-text">20 TL </p>
                     </div>
                 </div>
             </a>
             <a class="no-links-visible" href="bookinfo.php">
-                <div class="col card mr-sm-2" style="width: 17rem;">
-                <div class="p-3"><img class="card-img-top border border-dark" src="slider/hp7.jpg" alt="Harry Potter ve Ölüm Yadigarları"></div>
+                <div class="col card mx-1" style="width: 17rem;">
+                    <div class="p-3"><img class="card-img-top border border-dark" src="slider/hp7.jpg" alt="Harry Potter ve Ölüm Yadigarları"></div>
                     <div class="card-body">
                         <span class="fa fa-star checked"></span>
                         <span class="fa fa-star checked"></span>
@@ -111,8 +112,8 @@
                 </div>
             </a>
             <a class="no-links-visible" href="bookinfo.php">
-                <div class="col card mr-sm-2" style="width: 17rem;">
-                <div class="p-3"><img class="card-img-top border border-dark" src="slider/hp1.jpg" alt="Harry Potter ve Felsefe Taşı"></div>
+                <div class="col card mx-1" style="width: 17rem;">
+                    <div class="p-3"><img class="card-img-top border border-dark" src="slider/hp1.jpg" alt="Harry Potter ve Felsefe Taşı"></div>
                     <div class="card-body">
                         <span class="fa fa-star checked"></span>
                         <span class="fa fa-star checked"></span>
@@ -127,8 +128,8 @@
                 </div>
             </a>
             <a class="no-links-visible" href="bookinfo.php">
-                <div class="col card mr-sm-2" style="width: 17rem;">
-                <div class="p-3"><img class="card-img-top border border-dark" src="slider/hp4.jpg" alt="Harry Potter ve Ateş Kadehi"></div>
+                <div class="col card mx-1" style="width: 17rem;">
+                    <div class="p-3"><img class="card-img-top border border-dark" src="slider/hp4.jpg" alt="Harry Potter ve Ateş Kadehi"></div>
                     <div class="card-body">
                         <span class="fa fa-star checked"></span>
                         <span class="fa fa-star checked"></span>
@@ -143,10 +144,10 @@
                 </div>
             </a>
         </div>
-        <div class="row" style="margin-top: 10px">
+        <div class="row text-center justify-content-md-center" style="margin-top: 10px">
             <a class="no-links-visible" href="bookinfo.php">
-                <div class="col card mr-sm-2" style="width: 17rem;">
-                <div class="p-3"><img class="card-img-top border border-dark" src="slider/hp6.jpg" alt="Harry Potter ve Melez Prens"></div>
+                <div class="col card mx-1" style="width: 17rem;">
+                    <div class="p-3"><img class="card-img-top border border-dark" src="slider/hp6.jpg" alt="Harry Potter ve Melez Prens"></div>
                     <div class="card-body">
                         <span class="fa fa-star checked"></span>
                         <span class="fa fa-star checked"></span>
@@ -161,8 +162,8 @@
                 </div>
             </a>
             <a class="no-links-visible" href="bookinfo.php">
-                <div class="col card mr-sm-2" style="width: 17rem;">
-                <div class="p-3"><img class="card-img-top border border-dark" src="slider/hp7.jpg" alt="Harry Potter ve Ölüm Yadigarları"></div>
+                <div class="col card mx-1" style="width: 17rem;">
+                    <div class="p-3"><img class="card-img-top border border-dark" src="slider/hp7.jpg" alt="Harry Potter ve Ölüm Yadigarları"></div>
                     <div class="card-body">
                         <span class="fa fa-star checked"></span>
                         <span class="fa fa-star checked"></span>
@@ -177,8 +178,8 @@
                 </div>
             </a>
             <a class="no-links-visible" href="bookinfo.php">
-                <div class="col card mr-sm-2" style="width: 17rem;">
-                <div class="p-3"><img class="card-img-top border border-dark" src="slider/hp1.jpg" alt="Harry Potter ve Felsefe Taşı"></div>
+                <div class="col card mx-1" style="width: 17rem;">
+                    <div class="p-3"><img class="card-img-top border border-dark" src="slider/hp1.jpg" alt="Harry Potter ve Felsefe Taşı"></div>
                     <div class="card-body">
                         <span class="fa fa-star checked"></span>
                         <span class="fa fa-star checked"></span>
@@ -193,8 +194,8 @@
                 </div>
             </a>
             <a class="no-links-visible" href="bookinfo.php">
-                <div class="col card mr-sm-2" style="width: 17rem;">
-                <div class="p-3"><img class="card-img-top border border-dark" src="slider/hp4.jpg" alt="Harry Potter ve Ateş Kadehi"></div>
+                <div class="col card mx-1" style="width: 17rem;">
+                    <div class="p-3"><img class="card-img-top border border-dark" src="slider/hp4.jpg" alt="Harry Potter ve Ateş Kadehi"></div>
                     <div class="card-body">
                         <span class="fa fa-star checked"></span>
                         <span class="fa fa-star checked"></span>

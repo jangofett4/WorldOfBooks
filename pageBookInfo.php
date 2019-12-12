@@ -74,9 +74,9 @@
                         <span class="font-weight-bold text-primary">Fiyat</span>
                     </div>
                     <div class="col align-self-center">
-                        <button>Azalt</button>
+                    <button class="badge badge-pill badge-dark">-</button>
                         <label>20</label>
-                        <button>Arttır</button>
+                        <button class="badge badge-pill badge-dark">+</button>
                     </div>
                     <div class="col align-self-center">
                         <button type="button" class="btn btn-danger">Sepete Ekle</button>
