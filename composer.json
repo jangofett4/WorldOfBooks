@@ -1,5 +1,6 @@
 {
     "require": {
-        "loilo/fuse": "^3.4"
+        "loilo/fuse": "^3.4",
+        "google/cloud-datastore": "^1.10"
     }
 }
