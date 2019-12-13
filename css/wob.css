@@ -35,8 +35,81 @@ a.no-links-visible:active {
     text-decoration: none;
 }
 
-.card-body {
+.card-body-index {
     max-height: 250px;
     height: 250px;
     overflow: hidden;
+}
+
+.card-img-search {
+    width: 45%;
+}
+
+.footer {
+    background-color: #343a40;
+    color: white;
+}
+
+a.no-links-visible:link {
+    color: white;
+    text-decoration: none;
+}
+
+
+/* visited link */
+
+a.footer-no-links-visible:visited {
+    color: white;
+    text-decoration: none;
+}
+
+
+/* mouse over link */
+
+a.footer-no-links-visible:hover {
+    color: white;
+    text-decoration: none;
+}
+
+
+/* selected link */
+
+a.footer-no-links-visible:active {
+    color: white;
+    text-decoration: none;
+}
+
+a.no-links-visible-pagecontact:link {
+    color: gray;
+    text-decoration: none;
+}
+
+
+/* visited link */
+
+a.no-links-visible-pagecontact:visited {
+    color: gray;
+    text-decoration: none;
+}
+
+
+/* mouse over link */
+
+a.no-links-visible-pagecontact:hover {
+    color: black;
+    text-decoration: none;
+    border-bottom-color: black !important;
+}
+
+a.no-links-visible-pagecontact.active {
+    color: black;
+    border-bottom-color: black !important;
+}
+
+
+/* selected link */
+
+a.no-links-visible-pagecontact:active {
+    color: gray;
+    text-decoration: none;
 }
