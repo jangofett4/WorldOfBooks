@@ -9,7 +9,6 @@
     <title>World Of Books</title>
     <style>
         .carousel-inner {
-            width: 100%;
             height: 400px;
             max-height: 400px !important;
 
@@ -62,7 +61,7 @@
             <a class="no-links-visible" href="pageBookInfo.php">
                 <div class="col card mx-1" style="width: 17rem;">
                     <div class="p-3"><img class="card-img-top border border-dark" src="slider/nhp6.jpg" alt="Harry Potter ve Melez Prens" /></div>
-                    <div class="card-body">
+                    <div class="card-body-index">
                         <span class="fa fa-star checked"></span>
                         <span class="fa fa-star checked"></span>
                         <span class="fa fa-star checked"></span>
@@ -78,7 +77,7 @@
             <a class="no-links-visible" href="pageBookInfo.php">
                 <div class="col card mx-1" style="width: 17rem;">
                     <div class="p-3"><img class="card-img-top border border-dark" src="slider/hp77.jpg?" alt="Harry Potter ve Ölüm Yadigarları"></div>
-                    <div class="card-body">
+                    <div class="card-body-index">
                         <span class="fa fa-star checked"></span>
                         <span class="fa fa-star checked"></span>
                         <span class="fa fa-star checked"></span>
@@ -94,7 +93,7 @@
             <a class="no-links-visible" href="pageBookInfo.php">
                 <div class="col card mx-1" style="width: 17rem;">
                     <div class="p-3"><img class="card-img-top border border-dark" src="slider/hp1.jpg?" alt="Harry Potter ve Felsefe Taşı"></div>
-                    <div class="card-body">
+                    <div class="card-body-index">
                         <span class="fa fa-star checked"></span>
                         <span class="fa fa-star checked"></span>
                         <span class="fa fa-star checked"></span>
@@ -110,7 +109,7 @@
             <a class="no-links-visible" href="pageBookInfo.php">
                 <div class="col card mx-1" style="width: 17rem;">
                     <div class="p-3"><img class="card-img-top border border-dark" src="slider/nhp4.jpg?" alt="Harry Potter ve Ateş Kadehi"></div>
-                    <div class="card-body">
+                    <div class="card-body-index">
                         <span class="fa fa-star checked"></span>
                         <span class="fa fa-star checked"></span>
                         <span class="fa fa-star checked"></span>
@@ -128,7 +127,7 @@
             <a class="no-links-visible" href="pageBookInfo.php">
                 <div class="col card mx-1" style="width: 17rem;">
                     <div class="p-3"><img class="card-img-top border border-dark" src="slider/nhp6.jpg?" alt="Harry Potter ve Melez Prens"></div>
-                    <div class="card-body">
+                    <div class="card-body-index">
                         <span class="fa fa-star checked"></span>
                         <span class="fa fa-star checked"></span>
                         <span class="fa fa-star checked"></span>
@@ -144,7 +143,7 @@
             <a class="no-links-visible" href="pageBookInfo.php">
                 <div class="col card mx-1" style="width: 17rem;">
                     <div class="p-3"><img class="card-img-top border border-dark" src="slider/hp77.jpg?" alt="Harry Potter ve Ölüm Yadigarları"></div>
-                    <div class="card-body">
+                    <div class="card-body-index">
                         <span class="fa fa-star checked"></span>
                         <span class="fa fa-star checked"></span>
                         <span class="fa fa-star checked"></span>
@@ -160,7 +159,7 @@
             <a class="no-links-visible" href="pageBookInfo.php">
                 <div class="col card mx-1" style="width: 17rem;">
                     <div class="p-3"><img class="card-img-top border border-dark" src="slider/hp1.jpg?" alt="Harry Potter ve Felsefe Taşı"></div>
-                    <div class="card-body">
+                    <div class="card-body-index">
                         <span class="fa fa-star checked"></span>
                         <span class="fa fa-star checked"></span>
                         <span class="fa fa-star checked"></span>
@@ -176,7 +175,7 @@
             <a class="no-links-visible" href="pageBookInfo.php">
                 <div class="col card mx-1" style="width: 17rem;">
                     <div class="p-3"><img class="card-img-top border border-dark" src="slider/nhp4.jpg" alt="Harry Potter ve Ateş Kadehi"></div>
-                    <div class="card-body">
+                    <div class="card-body-index">
                         <span class="fa fa-star checked"></span>
                         <span class="fa fa-star checked"></span>
                         <span class="fa fa-star checked"></span>
@@ -191,7 +190,7 @@
             </a>
         </div>
     </div>
-
+    <?php include "templates/footer.php" ?>
 
     <!-- Libraries -->
     <script src="js/jquery-3.4.1.js"></script>

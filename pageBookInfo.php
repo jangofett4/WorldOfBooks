@@ -13,6 +13,7 @@
     </style>
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/all.css">
+    <link rel="stylesheet" href="css/wob.css">
     <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
 
     <script src="js/wobmain.js?"></script>
@@ -73,6 +74,7 @@
         <p class="text-center"> <span class="font-weight-bold">İlk Baskı Yılı : </span> <span>YILI</span> </p>
         <p class="text-center"> <span class="font-weight-bold">Dili : </span> <span>DİLİ</span> </p>
     </div>
+    <?php include "templates/footer.php" ?>
 
 
 
