@@ -14,8 +14,10 @@ function ajaxsearchbook(value) {
 
 function ajaxlogin(email, password)
 {
+    let modal = $("#loadingModal");
+    modal.modal();
     $.post("liblogin.php", { "email": email, "password": password }, (result) => {
-        $("#loadingModal").modal("hide");
+        modal.modal("hide");
         switch (result)
         {
             case "":

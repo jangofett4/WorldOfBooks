@@ -36,7 +36,7 @@
                         <label for="exampleInputPassword1">Şifre</label>
                         <input type="password" class="form-control" id="inputPassword" name="password" placeholder="Şifre">
                     </div>
-                    <button type="button" class="btn btn-secondary px-5" onclick="ajaxlogin(email.value, password.value)" data-toggle="modal" data-target="#loadingModal">Giriş Yap</button>
+                    <button type="button" class="btn btn-secondary px-5" onclick="ajaxlogin(email.value, password.value)">Giriş Yap</button>
                 </form>
             </div>
             <div class="col border text-center p-5 m-1">
