@@ -29,14 +29,14 @@
                 <form>
                     <div class="form-group">
                         <label for="exampleInputEmail1">E-Posta Adresi</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                        <input type="email" class="form-control" id="inputEmail" name="email" aria-describedby="emailHelp" placeholder="E-Posta">
                         <small id="emailHelp" class="form-text text-muted">E-Postanızı kimseyle paylaşmayınız.</small>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">Şifre</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                        <input type="password" class="form-control" id="inputPassword" name="password" placeholder="Şifre">
                     </div>
-                    <button type="submit" class="btn btn-secondary px-5">Giriş Yap</button>
+                    <button type="button" class="btn btn-secondary px-5" onclick="ajaxlogin(email.value, password.value)" data-toggle="modal" data-target="#loadingModal">Giriş Yap</button>
                 </form>
             </div>
             <div class="col border text-center p-5 m-1">
@@ -46,15 +46,21 @@
                 <div class="col"><a href="pageRegister.php"><button type="submit" class="btn btn-secondary px-5">Üye Ol</button></a></div>
             </div>
         </div>
-
-
-
     </div>
-
-
-
-
-
+    <div class="modal fade" data-backdrop="static" id="loadingModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-sm modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title mx-auto" id="exampleModalLabel">Giriş Yapılıyor</h5>
+                </div>
+                <div class="modal-body mx-auto">
+                    <div class="spinner-border" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Libraries -->
     <script src="js/jquery-3.4.1.js"></script>
     <script src="js/popper.min.js"></script>

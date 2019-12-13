@@ -18,7 +18,21 @@
             <div class="col-auto">
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav">
+                        <?php 
+                        if (!isset($_SESSION["logged"])) {
+                        ?>
+                        
                         <a class="nav-item nav-link active mr-sm-2" href="pageLogin.php">Giriş Yap <span class="sr-only">(current)</span></a>
+                        
+                        <?php 
+                        } else {
+                        ?>
+                        
+                        <button type="button" class="btn btn-primary mr-sm-2">Profil</button>
+                        
+                        <?php
+                        }
+                        ?>
                         <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
                             Sepet
                         </button>

@@ -1,5 +1,7 @@
 <?php
 
+require_once "vendor/autoload.php";
+
 use Google\Cloud\Datastore\DatastoreClient;
 
 class DSConnection {

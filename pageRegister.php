@@ -13,16 +13,14 @@
     </style>
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/all.css">
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
 
     <script src="js/wobmain.js?"></script>
 </head>
 
 <body>
     <?php include "templates/nav.php" ?>
-    
-    <div class="container" style="margin-top: 50px">
 
+    <div class="container" style="margin-top: 50px">
         <div class="row">
             <div class="col-4 border  p-4 m-1">
                 <div class="group-row text-center mb-2">
@@ -32,31 +30,33 @@
                     <div class="form-group row">
                         <div class="col">
                             <label for="exampleInputEmail1">Ad*</label>
-                            <input type="email" class="form-control" id="exampleInputName" name="name" placeholder="Adınızı Yazınız">
+                            <input type="text" class="form-control" id="inputName" name="uname" placeholder="Adınızı Yazınız" required>
                         </div>
                         <div class="col">
                             <label for="exampleInputEmail1">Soyad*</label>
-                            <input type="email" class="form-control" id="exampleInputSurname" name="surname" placeholder="Soyadınızı Yazınız">
+                            <input type="text" class="form-control" id="inputSurname" name="surname" placeholder="Soyadınızı Yazınız" required>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">E-Posta Adresi*</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" name="email1" placeholder="E-Postanızı Yazınız" style="margin-bottom: 4px">
+                        <input type="email" class="form-control" id="inputEmail" name="email" placeholder="E-Postanızı Yazınız" style="margin-bottom: 4px" required>
                         <label for="exampleInputEmail1">E-Posta Adresi(Tekrar)*</label>
-                        <input type="email" class="form-control" id="exampleInputEmail2" name="email2" placeholder="E-Postanızı Yazınız">
+                        <input type="email" class="form-control" id="inputEmailRe" name="emailre" placeholder="E-Postanızı Yazınız" required>
                     </div>
                     <div class="form-group row">
                         <div class="col">
                             <label for="exampleInputPassword1">Şifre*</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1" name="password1" placeholder="Şifrenizi Yazınız">
+                            <input type="password" class="form-control" id="inputPassword" name="password" placeholder="Şifrenizi Yazınız" required>
                         </div>
                         <div class="col">
                             <label for="exampleInputPassword1">Şifre(Tekrar)*</label>
-                            <input type="password" class="form-control" id="exampleInputPassword2" name="password2" placeholder="Şifrenizi Yazınız">
+                            <input type="password" class="form-control" id="inputPasswordRe" name="passwordre" placeholder="Şifrenizi Yazınız" required>
                         </div>
                     </div>
                     <div class="form-group row text-center">
-                        <div class="col"><button type="submit" class="btn btn-danger px-5 btn-block">Üye Ol</button></div>
+                        <div class="col">
+                            <button type="button" class="btn btn-danger px-5 btn-block" onclick="ajaxregister(uname.value, surname.value, email.value, emailre.value, password.value, passwordre.value)">Üye Ol</button>
+                        </div>
                     </div>
                 </form>
             </div>
@@ -68,20 +68,25 @@
                 <div class="col"><span>Üyelik formundaki boş alanları doldurarak hemen üye olabilirsiniz.</br>Hemen üye olarak binlerce kitaba anında ulaşın!</span></div>
             </div>
         </div>
-
-
-
+        <div class="modal fade" data-backdrop="static" id="loadingModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-sm modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title mx-auto" id="exampleModalLabel">Kayıt Yapılıyor</h5>
+                    </div>
+                    <div class="modal-body mx-auto">
+                        <div class="spinner-border" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-
-
-
-
-
     <!-- Libraries -->
     <script src="js/jquery-3.4.1.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.js"></script>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.4.5/fuse.min.js"></script> -->
 </body>
 
 </html>

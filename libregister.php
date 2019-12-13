@@ -1,41 +1,46 @@
 <?php
-require_once "vendor/autoload.php";
+
 require_once "libcon.php";
 
+session_start();
+
+if (isset($_SESSION["logged"]))
+    die("ERR_ALREADY_LOGGED"); // TODO: might send to main page instead
+
 isset(
-    $_POST["username"],
-    $_POST["password"],
-    $_POST["password2"], 
-
-    $_POST["name"],
-    $_POST["surname"],
-
     $_POST["email"],
-    $_POST["email2"]
-) or die("Ana sayfaya dönmek için <a href='index.php'>tıklayın</a>");
+    $_POST["password"],
+    $_POST["name"],
+    $_POST["surname"]
+) or die("ERR_EMPTY_INPUT");
 
 // fields
-$username   = $_POST["username"];
+$email      = $_POST["email"];
 $password   = $_POST["password"];
 $name       = $_POST["name"];
 $surname    = $_POST["surname"];
-$email      = $_POST["email"];
-
-// confirmations
-$password2 = $_POST["password2"];
-$email2 = $_POST["email2"];
-
-($password == $password2) or die("Ana sayfaya dönmek için <a href='index.php'>tıklayın</a>");
-($email == $email2) or die("Ana sayfaya dönmek için <a href='index.php'>tıklayın</a>");
 
 $con = DSConnection::open_or_get();
+
+$user = $con->query()
+    ->kind("UserInfo")
+    ->filter("email", "=", $email);
+$result = $con->runQuery($user);
+(iterator_count($result) == 0) or die("ERR_USER_EXISTS");
+
 $user = $con->entity("UserInfo");
 $user->set([
-    "username"  => $username,
+    "email"     => $email,
     "password"  => $password,
     "name"      => $name,
     "surname"   => $surname,
-    "email"     => $email
 ]);
 $con->insert($user);
+
+$_SESSION["user_key"] = $user->key();
+$_SESSION["user_name"] = $user["name"];
+$_SESSION["user_surname"] = $user["surname"];
+$_SESSION["user_email"] = $user["email"];
+$_SESSION["user_password"] = $user["password"];
+$_SESSION["logged"] = true;
 ?>
