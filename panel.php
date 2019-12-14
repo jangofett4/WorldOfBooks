@@ -17,6 +17,18 @@
         .checked {
             color: orange;
         }
+
+        /* Chrome, Safari, Edge, Opera */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        /* Firefox */
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
     </style>
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/all.css">
@@ -106,7 +118,95 @@
             </div>
         </div>
     <?php } else { ?>
-        
+        <div class="container ">
+            <nav>
+                <div class="nav nav-tabs row text-center border-bottom-0 mt-3" id="nav-tab" role="tablist">
+                    <a class="col active border-bottom mr-2 no-links-visible-pagecontact pb-2" id="nav-home-tab" data-toggle="tab" href="#about" role="tab" aria-controls="about" aria-selected="true">Kitap Ekle</a>
+                    <a class="col border-bottom ml-2 no-links-visible-pagecontact pb-2" id="nav-profile-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Kitap Düzenle</a>
+                </div>
+            </nav>
+            <div class="tab-content">
+                <div class="tab-pane fade show active" id="about" role="tabpanel" aria-labelledby="about-tab">
+                    <div class="text-center">
+                        <h6 class="col display-4">Kitap Ekle</h6>
+                    </div>
+                    <div class="col-sm-5 mx-auto">
+                        <div>
+                            <input type="file" class="custom-file-input" id="customFile" lang="tr" name="picture">
+                            <label class="custom-file-label" for="customFile">Resim Seç</label>
+                        </div>
+                        <div>
+                            <label for="exampleFormControlSelect1">Kitap Türü</label>
+                            <select class="form-control" id="exampleFormControlSelect1" name="booktype">
+                                <option>Şiir</option>
+                                <option>Hikaye</option>
+                                <option>Roman</option>
+                                <option>Tarih</option>
+                                <option>Masal</option>
+                            </select>
+                        </div>
+                        <div>
+                            Kitap İsmi
+                            <input type="text" class="form-control" placeholder="Kitap İsmi" name="bookname">
+                        </div>
+                        <div>
+                            Yazar İsmi
+                            <input type="text" class="form-control" placeholder="Yazar İsmi" name="author">
+                        </div>
+                        <div>
+                            Yayın Evi
+                            <input type="text" class="form-control" placeholder="Yayın Evi" name="publisher">
+                        </div>
+                        <div>
+                            Stok
+                            <input type="number" class="form-control" placeholder="Stok" name="stock">
+                        </div>
+                        <div>
+                            Fiyat
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">₺</span>
+                                </div>
+                                <input type="number" min="1" max="10000" class="form-control" placeholder="Fiyat" name="cost">
+                            </div>
+                        </div>
+                        <div>
+                            İlk Baskı Yılı
+                            <input type="text" class="form-control" placeholder="İlk Baskı Yılı" name="publishdate">
+                        </div>
+                        <div>
+                            Sayfa Sayısı
+                            <input type="number" min="1" max="10000" class="form-control" placeholder="Sayfa Sayısı" name="papercount">
+                        </div>
+                        <div>
+                            Dili
+                            <input type="text" class="form-control" placeholder="Dili" name="language">
+                        </div>
+                        <div>
+                            Açıklama
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description"></textarea>
+                        </div>
+
+                        <button type="button" class="btn btn-danger d-block mx-auto mt-2 px-5">Ekle</button>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                <div class="text-center">
+                    <h6 class="col display-4">Kitap Düzenle</h6>
+                </div>
+                <div class="mb-3">
+                    <h3 class="display-4 mb-3" style="font-size: 30px">World of Books Marka Vizyonu</h3>
+                    <p>İnsanların zihnen özgürleşmesinin ve kişisel gelişimlerinin önündeki engelleri kaldırarak kitaplara kolayca ulaşmasını sağlayarak en çok sevilen ve tercih edilen deneyim markası olmak.</p>
+                </div>
+                <div>
+                    <h3 class="display-4 mb-3" style="font-size: 30px">World of Books Marka Vizyonu</h3>
+                    <p>Sınırları kaldıran, özgürleştiren, ulaşılabilir bir platform olmak.</p>
+                </div>
+            </div>
+            </div>
+            
+        </div>
+
     <?php } ?>
     <!-- Libraries -->
     <script src="js/jquery-3.4.1.js"></script>
