@@ -12,6 +12,13 @@ function ajaxsearchbook(value) {
     }, 600);
 }
 
+function ajaxlogout()
+{
+    $.get("liblogout.php", (_) => {
+        window.location.assign("index.php");
+    });
+}
+
 function ajaxlogin(email, password)
 {
     let modal = $("#loadingModal");

@@ -27,9 +27,9 @@ foreach ($result as $userdata)
 {
     $_SESSION["user_key"] = $userdata->key();
     $_SESSION["user_name"] = $userdata["name"];
-    $_SESSION["user_surname"] = $userdata["name"];
-    $_SESSION["user_email"] = $userdata["name"];
-    $_SESSION["user_password"] = $userdata["name"];
+    $_SESSION["user_surname"] = $userdata["surname"];
+    $_SESSION["user_email"] = $userdata["email"];
+    $_SESSION["user_password"] = $userdata["password"];
     $_SESSION["logged"] = true;
     break;
 }

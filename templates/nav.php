@@ -30,7 +30,15 @@
                     } else {
                         ?>
 
-                        <button type="button" class="btn btn-primary mr-sm-2">Profil</button>
+                        <a class="nav-link dropdown-toggle mr-2" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <?php echo($_SESSION["user_name"] . " " . $_SESSION["user_surname"]) ?>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#" onclick="ajaxlogout()">Çıkış Yap</a>
+                        </div>
 
                     <?php
                     }
