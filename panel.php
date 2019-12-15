@@ -1,4 +1,6 @@
-<?php session_start(); ?>
+<?php
+require_once "libssn.php";
+?>
 <!doctype html>
 <html lang="tr">
 
@@ -112,6 +114,14 @@
                                     </button>
                                 </div>
                             <?php } ?>
+                            <?php if (LibSSN::get("restrict")) { ?>
+                                <div class="alert alert-danger alert-dismissible fade show mt-3 mb-0" role="alert">
+                                    <strong>Hata!</strong>Bu işlem için yeterli yetkiniz yok, giriş yapın.
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span class="fa fa-times"></span>
+                                    </button>
+                                </div>
+                            <?php } ?>
                         </div>
                     </div>
                 </div>
@@ -127,84 +137,138 @@
             </nav>
             <div class="tab-content">
                 <div class="tab-pane fade show active" id="about" role="tabpanel" aria-labelledby="about-tab">
-                    <div class="text-center">
-                        <h6 class="col display-4">Kitap Ekle</h6>
+                    <?php if (LibSSN::get("bookadd")) { ?>
+                    <div class="alert col-sm-6 mx-auto alert-success alert-dismissible fade show mt-3 mb-0" role="alert">
+                        Kitap Ekleme Başarılı!
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span class="fa fa-times"></span>
+                        </button>
                     </div>
-                    <div class="col-sm-5 mx-auto">
-                        <div>
-                            <input type="file" class="custom-file-input" id="customFile" lang="tr" name="picture">
-                            <label class="custom-file-label" for="customFile">Resim Seç</label>
-                        </div>
-                        <div>
-                            <label for="exampleFormControlSelect1">Kitap Türü</label>
-                            <select class="form-control" id="exampleFormControlSelect1" name="booktype">
-                                <option>Şiir</option>
-                                <option>Hikaye</option>
-                                <option>Roman</option>
-                                <option>Tarih</option>
-                                <option>Masal</option>
-                            </select>
-                        </div>
-                        <div>
-                            Kitap İsmi
-                            <input type="text" class="form-control" placeholder="Kitap İsmi" name="bookname">
-                        </div>
-                        <div>
-                            Yazar İsmi
-                            <input type="text" class="form-control" placeholder="Yazar İsmi" name="author">
-                        </div>
-                        <div>
-                            Yayın Evi
-                            <input type="text" class="form-control" placeholder="Yayın Evi" name="publisher">
-                        </div>
-                        <div>
-                            Stok
-                            <input type="number" class="form-control" placeholder="Stok" name="stock">
-                        </div>
-                        <div>
-                            Fiyat
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">₺</span>
-                                </div>
-                                <input type="number" min="1" max="10000" class="form-control" placeholder="Fiyat" name="cost">
+                    <?php } ?>
+                    <?php if (LibSSN::get("conerr")) { ?>
+                    <div class="alert col-sm-6 mx-auto alert-success alert-dismissible fade show mt-3 mb-0" role="alert">
+                        <strong>Hata!</strong> Sunucu ile bağlantı kurulamadı, tekrar deneyin.
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span class="fa fa-times"></span>
+                        </button>
+                    </div>
+                    <?php } ?>
+                    <?php if (LibSSN::get("imagerr")) { ?>
+                    <div class="alert col-sm-6 mx-auto alert-success alert-dismissible fade show mt-3 mb-0" role="alert">
+                        <strong>Hata!</strong> Seçilen kapak fotoğrafı geçersiz.
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span class="fa fa-times"></span>
+                        </button>
+                    </div>
+                    <?php } ?>
+                    <?php if (LibSSN::get("imagetoobig")) { ?>
+                    <div class="alert col-sm-6 mx-auto alert-success alert-dismissible fade show mt-3 mb-0" role="alert">
+                        <strong>Hata!</strong> Seçilen kapak fotoğrafı çok büyük, izin verilen max 3mb.
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span class="fa fa-times"></span>
+                        </button>
+                    </div>
+                    <?php } ?>
+                    <?php if (LibSSN::get("imagetyperr")) { ?>
+                    <div class="alert col-sm-6 mx-auto alert-success alert-dismissible fade show mt-3 mb-0" role="alert">
+                        <strong>Hata!</strong> Seçilen kapak fotoğrafı formatı hatalı, izin verilen dosya türleri: PNG, JPG, JPEG.
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span class="fa fa-times"></span>
+                        </button>
+                    </div>
+                    <?php } ?>
+                    <?php if (LibSSN::get("uplaoderr")) { ?>
+                    <div class="alert col-sm-6 mx-auto alert-success alert-dismissible fade show mt-3 mb-0" role="alert">
+                        <strong>Hata!</strong> Dosya yükleme hatası, tekrar deneyin.
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span class="fa fa-times"></span>
+                        </button>
+                    </div>
+                    <?php } ?>
+                    <div class="text-center">
+                        <h1 class="col display-4">Kitap Ekle</h1>
+                    </div>
+                    <div class="col-sm-6 mx-auto">
+                        <form action="libaddbook.php" method="post" enctype="multipart/form-data">
+                            <div>
+                                <input type="file" class="custom-file-input" id="customFile" lang="tr" name="bookcover" required>
+                                <label class="custom-file-label" for="customFile">Kapak Fotoğrafı Seçin</label>
                             </div>
-                        </div>
-                        <div>
-                            İlk Baskı Yılı
-                            <input type="text" class="form-control" placeholder="İlk Baskı Yılı" name="publishdate">
-                        </div>
-                        <div>
-                            Sayfa Sayısı
-                            <input type="number" min="1" max="10000" class="form-control" placeholder="Sayfa Sayısı" name="papercount">
-                        </div>
-                        <div>
-                            Dili
-                            <input type="text" class="form-control" placeholder="Dili" name="language">
-                        </div>
-                        <div>
-                            Açıklama
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description"></textarea>
-                        </div>
+                            <div class="row">
+                                <div class="col">
+                                    Kitap İsmi
+                                    <input type="text" class="form-control" placeholder="Kitap İsmi" name="bookname" required>
+                                </div>
+                                <div class="col">
+                                    Yazar İsmi
+                                    <input type="text" class="form-control" placeholder="Yazar İsmi" name="author" required>
+                                </div>
+                            </div>
+                            <div>
+                                <label for="bookTypeSelect">Kitap Türü</label>
+                                <select class="form-control" id="bookTypeSelect" name="booktype">
+                                    <option>Şiir</option>
+                                    <option>Hikaye</option>
+                                    <option>Roman</option>
+                                    <option>Tarih</option>
+                                    <option>Masal</option>
+                                </select>
+                            </div>
+                            <div>
+                                Yayın Evi
+                                <input type="text" class="form-control" placeholder="Yayın Evi" name="publisher" required>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    Stok
+                                    <input type="number" class="form-control" placeholder="Stok" name="stock" required>
+                                </div>
+                                <div class="col">
+                                    Fiyat
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">₺</span>
+                                        </div>
+                                        <input type="number" min="1" step="0.05" max="10000" class="form-control" placeholder="Fiyat" name="cost" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                İlk Baskı Yılı
+                                <input type="text" class="form-control" placeholder="İlk Baskı Yılı" name="publishdate" required>
+                            </div>
+                            <div>
+                                Sayfa Sayısı
+                                <input type="number" min="1" max="10000" class="form-control" placeholder="Sayfa Sayısı" name="papercount" required>
+                            </div>
+                            <div>
+                                Dili
+                                <input type="text" class="form-control" placeholder="Dili" name="language" required>
+                            </div>
+                            <div>
+                                Açıklama
+                                <textarea class="form-control" rows="3" name="description" required></textarea>
+                            </div>
 
-                        <button type="button" class="btn btn-danger d-block mx-auto mt-2 px-5">Ekle</button>
+                            <button type="submit" class="btn btn-success btn-block d-block mx-auto mt-2 px-5">Ekle</button>
+                        </form>
                     </div>
                 </div>
                 <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                <div class="text-center">
-                    <h6 class="col display-4">Kitap Düzenle</h6>
-                </div>
-                <div class="mb-3">
-                    <h3 class="display-4 mb-3" style="font-size: 30px">World of Books Marka Vizyonu</h3>
-                    <p>İnsanların zihnen özgürleşmesinin ve kişisel gelişimlerinin önündeki engelleri kaldırarak kitaplara kolayca ulaşmasını sağlayarak en çok sevilen ve tercih edilen deneyim markası olmak.</p>
-                </div>
-                <div>
-                    <h3 class="display-4 mb-3" style="font-size: 30px">World of Books Marka Vizyonu</h3>
-                    <p>Sınırları kaldıran, özgürleştiren, ulaşılabilir bir platform olmak.</p>
+                    <div class="text-center">
+                        <h6 class="col display-4">Kitap Düzenle</h6>
+                    </div>
+                    <div class="mb-3">
+                        <h3 class="display-4 mb-3" style="font-size: 30px">World of Books Marka Vizyonu</h3>
+                        <p>İnsanların zihnen özgürleşmesinin ve kişisel gelişimlerinin önündeki engelleri kaldırarak kitaplara kolayca ulaşmasını sağlayarak en çok sevilen ve tercih edilen deneyim markası olmak.</p>
+                    </div>
+                    <div>
+                        <h3 class="display-4 mb-3" style="font-size: 30px">World of Books Marka Vizyonu</h3>
+                        <p>Sınırları kaldıran, özgürleştiren, ulaşılabilir bir platform olmak.</p>
+                    </div>
                 </div>
             </div>
-            </div>
-            
+
         </div>
 
     <?php } ?>
