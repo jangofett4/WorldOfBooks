@@ -22,15 +22,6 @@
     line-height: 1.42857;
 }
 
-
-/* unvisited link */
-
-a.no-links-visible:link {
-    color: black;
-    text-decoration: none;
-}
-
-
 /* visited link */
 
 a.no-links-visible:visited {
@@ -38,16 +29,10 @@ a.no-links-visible:visited {
     text-decoration: none;
 }
 
-
-/* mouse over link */
-
-a.no-links-visible:hover {
+a.no-links-visible:link {
     color: black;
     text-decoration: none;
 }
-
-
-/* selected link */
 
 a.no-links-visible:active {
     color: black;
@@ -69,10 +54,6 @@ a.no-links-visible:active {
     color: white;
 }
 
-a.no-links-visible:link {
-    color: white;
-    text-decoration: none;
-}
 
 
 /* visited link */
