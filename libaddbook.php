@@ -66,10 +66,28 @@ if ($check !== false) {
         exit();
     }
 
+    $split = explode(' ', $bookname);
+    $tags = array();
+    foreach ($split as $word)
+        if (strlen($word) < 3)
+            array_push($tags, $word);
+        else
+            for ($i = 3; $i <= strlen($word); $i++)
+                array_push($tags, mb_substr($word, 0, $i));
+    $split = explode(' ', $author);
+    foreach ($split as $word)
+        if (strlen($word) < 3)
+            array_push($tags, $word);
+        else
+            for ($i = 3; $i <= strlen($word); $i++)
+                array_push($tags, mb_substr($word, 0, $i));
+                
     try {
         $con = DSConnection::open_or_get();
         $book = $con->entity("Books");
         $book->set([
+            "added" => date(DATE_RFC3339),
+            "tags" => $tags,
             "name" => $bookname,
             "author" => $author,
             "type" => $type,
