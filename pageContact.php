@@ -49,23 +49,25 @@
                     <h6 class="col display-4">Bize Yazın</h6>
                 </div>
                 <div class="">
+                    <form method="POST" action="mailto.php">
                     <div>
                         E-Posta
-                        <input type="text" class="form-control" placeholder="E-Posta">
+                        <input type="text" class="form-control" placeholder="E-Posta" name="email">
                     </div>
                     <div>
                         Ad
-                        <input type="text" class="form-control" placeholder="Ad">
+                        <input type="text" class="form-control" placeholder="Ad" name="name">
                     </div>
                     <div>
                         Soyad
-                        <input type="text" class="form-control" placeholder="Soyad">
+                        <input type="text" class="form-control" placeholder="Soyad" name="surname">
                     </div>
                     <div>
                         Yorum
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="message"></textarea>
                     </div>
-                    <button type="button" class="btn btn-danger d-block mx-auto mt-2 px-5">Gönder</button>
+                    <input type="submit" class="btn btn-danger d-block mx-auto mt-2 px-5" value="Gönder">
+                    </form>
                 </div>
             </div>
         </div>

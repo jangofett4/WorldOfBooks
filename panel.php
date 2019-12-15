@@ -259,12 +259,142 @@ require_once "libssn.php";
                         <h6 class="col display-4">Kitap Düzenle</h6>
                     </div>
                     <div class="mb-3">
-                        <h3 class="display-4 mb-3" style="font-size: 30px">World of Books Marka Vizyonu</h3>
-                        <p>İnsanların zihnen özgürleşmesinin ve kişisel gelişimlerinin önündeki engelleri kaldırarak kitaplara kolayca ulaşmasını sağlayarak en çok sevilen ve tercih edilen deneyim markası olmak.</p>
+                        <div class="input-group">
+                            <input type="text" class="form-control mr-sm-2" id="navsearch" onkeyup="ajaxsearchbook(this.value)" placeholder="Kitap ya da Yazar (örn. Harry Potter)">
+                            <span class="input-group-btn">
+                                <button class="btn btn-outline-success" type="submit"><span class="fa fa-search"></span></button>
+                            </span>
+                        </div>
                     </div>
-                    <div>
-                        <h3 class="display-4 mb-3" style="font-size: 30px">World of Books Marka Vizyonu</h3>
-                        <p>Sınırları kaldıran, özgürleştiren, ulaşılabilir bir platform olmak.</p>
+                    <div class="mb-3">
+                        <div class="mt-5">
+                            <div class="row p-2">
+                                <div class="col">
+                                    <div class="col card mb-3k border mx-auto p-3">
+                                        <div class="row no-gutters">
+                                            <div class="col-4">
+                                                <img src="slider/hp1.jpg?" class="card-img card-img-fluid card-img-search " alt="...">
+                                            </div>
+                                            <div class="col-8">
+                                                <div class="card-body">
+                                                    <div class="row ">
+                                                        <div class="col align-self-center ">
+                                                            <h5 class="card-title">Kitap İsmi</h5>
+                                                            <p class="card-text">J. K. Rowling </p>
+                                                            <p class="card-text">Kitabevi </p>
+                                                            <p class="card-text">Stok </p>
+                                                        </div>
+                                                        <div class="col align-self-center ">
+                                                            <h5 class="bold">Fiyat</h5>
+                                                        </div>
+                                                        <div class="col align-self-center">
+                                                            <div class="row m-2">
+                                                                <button type="button" class="btn btn-danger w-100">Düzenle</button>
+                                                            </div>
+                                                            <div class="row m-2 ">
+                                                                <input type="number" class="form-control" placeholder="Stok" name="stock">
+                                                            </div>
+                                                            <div class="row m-2">
+                                                                <div class="col">
+                                                                    <button class="btn btn-circle btn-dark d-block mx-auto"> <span class="fa fa-minus"></span> </button>
+                                                                </div>
+                                                                <div class="col">
+                                                                    <button class="btn btn-circle btn-dark d-block mx-auto"> <span class="fa fa-plus"></span></button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row p-2">
+                                <div class="col">
+                                    <div class="col card mb-3k border mx-auto p-3">
+                                        <div class="row no-gutters">
+                                            <div class="col-4">
+                                                <img src="slider/hp1.jpg?" class="card-img card-img-fluid card-img-search " alt="...">
+                                            </div>
+                                            <div class="col-8">
+                                                <div class="card-body">
+                                                    <div class="row ">
+                                                        <div class="col align-self-center ">
+                                                            <h5 class="card-title">Kitap İsmi</h5>
+                                                            <p class="card-text">J. K. Rowling </p>
+                                                            <p class="card-text">Kitabevi </p>
+                                                            <p class="card-text">Stok </p>
+                                                        </div>
+                                                        <div class="col align-self-center ">
+                                                            <h5 class="bold">Fiyat</h5>
+                                                        </div>
+                                                        <div class="col align-self-center">
+                                                            <div class="row m-2">
+                                                                <button type="button" class="btn btn-danger w-100">Düzenle</button>
+                                                            </div>
+                                                            <div class="row m-2 ">
+                                                                <input type="number" class="form-control" placeholder="Stok" name="stock">
+                                                            </div>
+                                                            <div class="row m-2 ">
+                                                            <div class="col">
+                                                                    <button class="btn btn-circle btn-dark d-block mx-auto"> <span class="fa fa-minus"></span> </button>
+                                                                </div>
+                                                                <div class="col">
+                                                                    <button class="btn btn-circle btn-dark d-block mx-auto"> <span class="fa fa-plus"></span></button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row p-2">
+                                <div class="col">
+                                    <div class="col card mb-3k border mx-auto p-3">
+                                        <div class="row no-gutters">
+                                            <div class="col-4">
+                                                <img src="slider/hp1.jpg?" class="card-img card-img-fluid card-img-search " alt="...">
+                                            </div>
+                                            <div class="col-8">
+                                                <div class="card-body">
+                                                    <div class="row ">
+                                                        <div class="col align-self-center ">
+                                                            <h5 class="card-title">Kitap İsmi</h5>
+                                                            <p class="card-text">J. K. Rowling </p>
+                                                            <p class="card-text">Kitabevi </p>
+                                                            <p class="card-text">Stok </p>
+                                                        </div>
+                                                        <div class="col align-self-center ">
+                                                            <h5 class="bold">Fiyat</h5>
+                                                        </div>
+                                                        <div class="col align-self-center">
+                                                            <div class="row m-2">
+                                                                <button type="button" class="btn btn-danger w-100">Düzenle</button>
+                                                            </div>
+                                                            <div class="row m-2 ">
+                                                                <input type="number" class="form-control" placeholder="Stok" name="stock">
+                                                            </div>
+                                                            <div class="row m-2 ">
+                                                            <div class="col">
+                                                                    <button class="btn btn-circle btn-dark d-block mx-auto"> <span class="fa fa-minus"></span> </button>
+                                                                </div>
+                                                                <div class="col">
+                                                                    <button class="btn btn-circle btn-dark d-block mx-auto"> <span class="fa fa-plus"></span></button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
