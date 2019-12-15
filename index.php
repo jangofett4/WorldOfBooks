@@ -1,4 +1,10 @@
-<?php session_start(); ?>
+<?php
+
+use Google\Cloud\Datastore\Query\Query;
+
+require_once "libssn.php";
+require_once "libcon.php";
+?>
 <!doctype html>
 <html lang="tr">
 
@@ -57,137 +63,36 @@
         </div>
     </div>
     <div class="container " style="margin-top: 30px">
-        <div class="row text-center justify-content-md-center">
-            <a class="no-links-visible" href="pageBookInfo.php">
-                <div class="col-sm card mx-1" style="width: 17rem;">
-                    <div class="p-3"><img class="card-img-top border border-dark" src="slider/nhp6.jpg" alt="Harry Potter ve Melez Prens" /></div>
-                    <div class="card-body-index">
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
-                        <p class="card-text">Harry Potter ve Melez Prens</p>
-                        <p class="card-text">J. K. Rowling </p>
-                        <p class="card-text">Kitabevi </p>
-                        <p class="card-text">20 TL </p>
-                    </div>
-                </div>
-            </a>
-            <a class="no-links-visible" href="pageBookInfo.php">
-                <div class="col-sm card mx-1" style="width: 17rem;">
-                    <div class="p-3"><img class="card-img-top border border-dark" src="slider/hp77.jpg?" alt="Harry Potter ve Ölüm Yadigarları"></div>
-                    <div class="card-body-index">
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
-                        <p class="card-text">Harry Potter ve Ölüm Yadigarları</p>
-                        <p class="card-text">J. K. Rowling </p>
-                        <p class="card-text">Kitabevi </p>
-                        <p class="card-text">20 TL </p>
-                    </div>
-                </div>
-            </a>
-            <a class="no-links-visible" href="pageBookInfo.php">
-                <div class="col-sm card mx-1" style="width: 17rem;">
-                    <div class="p-3"><img class="card-img-top border border-dark" src="slider/hp1.jpg?" alt="Harry Potter ve Felsefe Taşı"></div>
-                    <div class="card-body-index">
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
-                        <p class="card-text">Harry Potter ve Felsefe Taşı</p>
-                        <p class="card-text">J. K. Rowling </p>
-                        <p class="card-text">Kitabevi </p>
-                        <p class="card-text">20 TL </p>
-                    </div>
-                </div>
-            </a>
-            <a class="no-links-visible" href="pageBookInfo.php">
-                <div class="col-sm card mx-1" style="width: 17rem;">
-                    <div class="p-3"><img class="card-img-top border border-dark" src="slider/nhp4.jpg?" alt="Harry Potter ve Ateş Kadehi"></div>
-                    <div class="card-body-index">
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
-                        <p class="card-text">Kitap Adı</p>
-                        <p class="card-text">Yazar </p>
-                        <p class="card-text">Kitabevi </p>
-                        <p class="card-text">Fiyat </p>
-                    </div>
-                </div>
-            </a>
+        <div class="text-center">
+            <h1 class="display-4">Son Eklenenler</h1>
         </div>
-        <div class="row text-center justify-content-md-center" style="margin-top: 10px">
+        <?php
+        $con = DSConnection::open_or_get();
+        $query = $con->query()
+            ->kind("Books")
+            ->order("added", Query::ORDER_DESCENDING)
+            ->limit(20);
+        $result = $con->runQuery($query);
+        ?>
+        <div class="row text-center justify-content-md-center">
+            <?php foreach ($result as $book) { ?>
             <a class="no-links-visible" href="pageBookInfo.php">
                 <div class="col-sm card mx-1" style="width: 17rem;">
-                    <div class="p-3"><img class="card-img-top border border-dark" src="slider/nhp6.jpg?" alt="Harry Potter ve Melez Prens"></div>
+                    <div class="p-3"><img class="card-img-top border border-dark" src="<?php echo $book["coverpath"] ?>" alt="Harry Potter ve Melez Prens" /></div>
                     <div class="card-body-index">
                         <span class="fa fa-star checked"></span>
                         <span class="fa fa-star checked"></span>
                         <span class="fa fa-star checked"></span>
                         <span class="fa fa-star"></span>
                         <span class="fa fa-star"></span>
-                        <p class="card-text">Harry Potter ve Melez Prens</p>
-                        <p class="card-text">J. K. Rowling </p>
-                        <p class="card-text">Kitabevi </p>
-                        <p class="card-text">20 TL </p>
+                        <p class="card-text"><?php echo $book["name"] ?></p>
+                        <p class="card-text"><?php echo $book["author"] ?> </p>
+                        <p class="card-text"><?php echo $book["publisher"] ?></p>
+                        <p class="card-text"><?php echo $book["cost"] ?> ₺</p>
                     </div>
                 </div>
             </a>
-            <a class="no-links-visible" href="pageBookInfo.php">
-                <div class="col-sm card mx-1" style="width: 17rem;">
-                    <div class="p-3"><img class="card-img-top border border-dark" src="slider/hp77.jpg?" alt="Harry Potter ve Ölüm Yadigarları"></div>
-                    <div class="card-body-index">
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
-                        <p class="card-text">Harry Potter ve Ölüm Yadigarları</p>
-                        <p class="card-text">J. K. Rowling </p>
-                        <p class="card-text">Kitabevi </p>
-                        <p class="card-text">20 TL </p>
-                    </div>
-                </div>
-            </a>
-            <a class="no-links-visible" href="pageBookInfo.php">
-                <div class="col-sm card mx-1" style="width: 17rem;">
-                    <div class="p-3"><img class="card-img-top border border-dark" src="slider/hp1.jpg?" alt="Harry Potter ve Felsefe Taşı"></div>
-                    <div class="card-body-index">
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
-                        <p class="card-text">Harry Potter ve Felsefe Taşı</p>
-                        <p class="card-text">J. K. Rowling </p>
-                        <p class="card-text">Kitabevi </p>
-                        <p class="card-text">20 TL </p>
-                    </div>
-                </div>
-            </a>
-            <a class="no-links-visible" href="pageBookInfo.php">
-                <div class="col-sm card mx-1" style="width: 17rem;">
-                    <div class="p-3"><img class="card-img-top border border-dark" src="slider/nhp4.jpg" alt="Harry Potter ve Ateş Kadehi"></div>
-                    <div class="card-body-index">
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
-                        <p class="card-text">Kitap Adı</p>
-                        <p class="card-text">Yazar </p>
-                        <p class="card-text">Kitabevi </p>
-                        <p class="card-text">Fiyat </p>
-                    </div>
-                </div>
-            </a>
+            <?php } ?>
         </div>
     </div>
     <?php include "templates/footer.php" ?>

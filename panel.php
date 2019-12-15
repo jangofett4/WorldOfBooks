@@ -189,7 +189,7 @@ require_once "libssn.php";
                         <h1 class="col display-4">Kitap Ekle</h1>
                     </div>
                     <div class="col-sm-6 mx-auto">
-                        <form action="libaddbook.php" method="post" enctype="multipart/form-data">
+                        <form action="libaddbook.php" method="post" accept-charset="UTF-8" enctype=multipart/form-data>
                             <div>
                                 <input type="file" class="custom-file-input" id="customFile" lang="tr" name="bookcover" required>
                                 <label class="custom-file-label" for="customFile">Kapak Fotoğrafı Seçin</label>

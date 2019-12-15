@@ -6,7 +6,7 @@ function ajaxsearchbook(value) {
     searchTimeout = setTimeout(() => {
         if (value == "")
             return;
-        $.get("search.php", { query: value }, function (data) {
+        $.get("libsearch.php", { query: value }, function (data) {
             console.log(data);
         });
     }, 600);

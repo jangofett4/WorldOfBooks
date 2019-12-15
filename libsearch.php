@@ -1,35 +1,49 @@
 <?php
+
+use Google\Cloud\Datastore\Entity;
+
 require_once "vendor/autoload.php";
 require_once "libcon.php";
 
-$con = DSConnection::open_or_get();
-$query = $con->gql
-
 isset($_GET["query"]) or die();
-$query = $_GET["query"];
+$search = $_GET["query"];
 
-$fuse = new \Fuse\Fuse([
-    [
-      "title" => "Old Man's War",
-      "author" => "John Scalzi"
-    ],
-    [
-      "title" => "The Lock Artist",
-      "author" => "Steve Hamilton"
-    ],
-    [
-      "title" => "HTML5",
-      "author" => "Remy Sharp"
-    ],
-    [
-      "title" => "Right Ho Jeeves",
-      "author" => "P.D Woodhouse"
-    ],
-  ], [
-    "keys" => ["title", "author"]
-    ]
-);
+$split = explode(' ', $search);
+$results = array();
 
-$searchresult = $fuse->search($query);
-$json = json_encode($searchresult);
-echo $json;
+$con = DSConnection::open_or_get();
+$books = array();
+foreach ($split as $word)
+{
+    $word = strtolower($word);
+    $query = $con->query()
+        ->kind("Books")
+        ->filter("tags", "=", $word);
+    $result = $con->runQuery($query);
+
+    /** @var Entity $book */
+    foreach ($result as $book)
+    {
+        $key = $book->key()->pathEndIdentifier();
+        if (!isset($results[$key]))
+        {
+            $results[$key] = true;
+            array_push($books, [
+                "added" => $book["date"],
+                "name" => $book["name"],
+                "author" => $book["author"],
+                "type" => $book["type"],
+                "stock" => $book["stock"],
+                "cost" => $book["cost"],
+                "published" => $book["published"],
+                "publisher" => $book["publisher"],
+                "papercount" => $book["papercount"],
+                "language" => $book["language"],
+                "description" => $book["description"],
+                "coverpath" => $book["coverpath"]
+            ]);
+        }
+    }
+}
+
+echo json_encode($books);
