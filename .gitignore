@@ -2,4 +2,3 @@ composer.phar
 /vendor/
 
 worldofbooks-keys.json
-/covers/*
