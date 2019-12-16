@@ -12,12 +12,16 @@
             </div>
             <div class="col-auto collapse navbar-collapse row" id="navbarNavAltMarkup">
                 <div class="col">
-                    <div class="input-group">
-                        <input type="text" class="form-control mr-sm-2" id="navsearch" onkeyup="ajaxsearchbook(this.value)" placeholder="Kitap ya da Yazar (örn. Harry Potter)">
-                        <span class="input-group-btn">
-                            <button class="btn btn-outline-success" type="submit"><span class="fa fa-search"></span></button>
-                        </span>
-                    </div>
+                    <form action="pageSearchResults.php" method="GET">
+                        <div class="input-group">
+                            <!-- onkeyup="ajaxsearchbook(this.value)" -->
+                            <input type="text" class="form-control mr-sm-2" id="navsearch" placeholder="Kitap ya da Yazar (örn. Harry Potter)" name="query" value="<?php if (isset($_GET["query"])) echo $_GET["query"]; ?>">
+                            <input type="hidden" name="dedicated" value="1" />
+                            <span class="input-group-btn">
+                                <button class="btn btn-outline-success" type="submit"><span class="fa fa-search"></span></button>
+                            </span>
+                        </div>
+                    </form>
                 </div>
                 <div class="navbar-nav col-auto">
                     <?php
@@ -31,7 +35,7 @@
                         ?>
 
                         <a class="nav-link dropdown-toggle mr-2" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <?php echo($_SESSION["user_name"] . " " . $_SESSION["user_surname"]) ?>
+                            <?php echo ($_SESSION["user_name"] . " " . $_SESSION["user_surname"]) ?>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="#">Action</a>

@@ -16,9 +16,25 @@ class LibSSN
         return false;
     }
 
+    public static function getv($key)
+    {
+        if (isset($_SESSION[$key]))
+        {
+            $val = $_SESSION[$key];
+            unset($_SESSION[$key]);
+            return $val;
+        }
+        return null;
+    }
+
     public static function set($key)
     {
         $_SESSION[$key] = true;
+    }
+
+    public static function setv($key, $value)
+    {
+        $_SESSION[$key] = $value;
     }
 }
 
