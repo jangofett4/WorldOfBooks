@@ -1,6 +1,7 @@
 <?php
 
 require_once "vendor/autoload.php";
+require_once "libssn.php";
 
 use Google\Cloud\Datastore\DatastoreClient;
 
@@ -12,8 +13,15 @@ class DSConnection {
     {
         if (!isset(DSConnection::$connection))
         {
+            $keys = LibSSN::getvnd("_keys");
+            if ($keys == null)
+            {
+                $keys = json_decode(file_get_contents("worldofbooks-keys.json"), true);
+                LibSSN::setv("_keys", $keys);
+            }
+
             DSConnection::$connection = new DatastoreClient([
-                "keyFile" => json_decode(file_get_contents("worldofbooks-keys.json"), true)
+                "keyFile" => $keys
             ]);
         }
 

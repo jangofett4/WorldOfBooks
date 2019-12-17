@@ -33,7 +33,7 @@ require_once "libssn.php";
         <div class="container" style="margin-top: 50px">
             <div class="row">
                 <div class="col">
-                    <h1 class="display-5"><?php $book["name"] ?></h1>
+                    <h1 class="display-5"><?php echo $book["name"] ?></h1>
                 </div>
 
                 <div class="text-center col align-self-center">
