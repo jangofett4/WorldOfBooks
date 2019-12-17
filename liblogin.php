@@ -3,8 +3,8 @@
 use Google\Cloud\Datastore\Entity;
 
 require_once "libcon.php";
-
-session_start();
+require_once "libcart.php";
+require_once "libssn.php";
 
 (!isset($_SESSION["logged"])) or die("ERR_ALREADY_LOGGED");
 
@@ -25,12 +25,14 @@ $result = $con->runQuery($query);
 /** @var Entity $userdata */
 foreach ($result as $userdata)
 {
-    $_SESSION["user_key"] = $userdata->key();
+    $_SESSION["user_key"] = $userdata->key()->pathEndIdentifier();
     $_SESSION["user_name"] = $userdata["name"];
     $_SESSION["user_surname"] = $userdata["surname"];
     $_SESSION["user_email"] = $userdata["email"];
     $_SESSION["user_password"] = $userdata["password"];
     $_SESSION["logged"] = true;
+
+    LibCart::init(); // add previously added items into users cart
     break;
 }
 

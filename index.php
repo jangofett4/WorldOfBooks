@@ -1,5 +1,6 @@
 <?php
 
+use Google\Cloud\Datastore\Entity;
 use Google\Cloud\Datastore\Query\Query;
 
 require_once "libssn.php";
@@ -75,8 +76,8 @@ require_once "libcon.php";
         $result = $con->runQuery($query);
         ?>
         <div class="row text-center justify-content-md-center">
-            <?php foreach ($result as $book) { ?>
-            <a class="no-links-visible" href="pageBookInfo.php">
+            <?php /** @var Entity $book */ foreach ($result as $book) { ?>
+            <a class="no-links-visible" href="pageBookInfo.php?book=<?php echo $book->key()->pathEndIdentifier() ?>">
                 <div class="col-sm card m-1" style="width: 17rem;">
                     <div class="p-3"><img class="card-img-top border border-dark" src="<?php echo $book["coverpath"] ?>" alt="<?php echo $book["name"] ?>" style="height: 18rem"/></div>
                     <div class="card-body-index">
