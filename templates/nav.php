@@ -25,14 +25,14 @@
                 </div>
                 <div class="navbar-nav col-auto">
                     <?php
-                    if (!isset($_SESSION["logged"])) {
-                        ?>
+                                                                                                                                                                    if (!isset($_SESSION["logged"])) {
+                    ?>
 
                         <a class="nav-item nav-link active mr-sm-2" href="pageLogin.php">Giriş Yap <span class="sr-only">(current)</span></a>
 
                     <?php
-                    } else {
-                        ?>
+                                                                                                                                                                    } else {
+                    ?>
 
                         <a class="nav-link dropdown-toggle mr-2" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <?php echo ($_SESSION["user_name"] . " " . $_SESSION["user_surname"]) ?>
@@ -45,11 +45,49 @@
                         </div>
 
                     <?php
-                    }
+                                                                                                                                                                    }
                     ?>
-                    <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
-                        Sepet
-                    </button>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Sepet
+                        </button>
+                        <div class="dropdown-menu col-sm-12" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item overflow-hidden" href="#">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="list-group">
+                                            <a href="#" class="list-group-item list-group-item-action active">
+                                                <div class="d-flex w-100 justify-content-between">
+                                                    <h5 class="mb-1">List group item heading</h5>
+                                                    <small>3 days ago</small>
+                                                </div>
+                                                <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                                                <small>Donec id elit non mi porta.</small>
+                                            </a>
+                                            <a href="#" class="list-group-item list-group-item-action">
+                                                <div class="d-flex w-100 justify-content-between">
+                                                    <h5 class="mb-1">List group item heading</h5>
+                                                    <small class="text-muted">3 days ago</small>
+                                                </div>
+                                                <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                                                <small class="text-muted">Donec id elit non mi porta.</small>
+                                            </a>
+                                            <a href="#" class="list-group-item list-group-item-action">
+                                                <div class="d-flex w-100 justify-content-between">
+                                                    <h5 class="mb-1">List group item heading</h5>
+                                                    <small class="text-muted">3 days ago</small>
+                                                </div>
+                                                <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                                                <small class="text-muted">Donec id elit non mi porta.</small>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

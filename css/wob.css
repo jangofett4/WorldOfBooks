@@ -22,6 +22,7 @@
     line-height: 1.42857;
 }
 
+
 /* visited link */
 
 a.no-links-visible:visited {
@@ -53,7 +54,6 @@ a.no-links-visible:active {
     background-color: #343a40;
     color: white;
 }
-
 
 
 /* visited link */

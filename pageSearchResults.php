@@ -67,6 +67,7 @@ include_once "libsearch.php";
                 </div>
             </div>
         <?php } ?>
+    </div>
         <?php include "templates/footer.php" ?>
         <!-- Libraries -->
         <script src="js/jquery-3.4.1.js"></script>

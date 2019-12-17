@@ -79,7 +79,7 @@ require_once "libcon.php";
             <a class="no-links-visible" href="pageBookInfo.php">
                 <div class="col-sm card m-1" style="width: 17rem;">
                     <div class="p-3"><img class="card-img-top border border-dark" src="<?php echo $book["coverpath"] ?>" alt="<?php echo $book["name"] ?>" style="height: 18rem"/></div>
-                    <div class="card-body">
+                    <div class="card-body-index">
                         <span class="fa fa-star checked"></span>
                         <span class="fa fa-star checked"></span>
                         <span class="fa fa-star checked"></span>
