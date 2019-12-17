@@ -1,5 +1,25 @@
 var searchTimeout;
 
+function post(path, params, method='post') {
+    const form = document.createElement('form');
+    form.method = method;
+    form.action = path;
+  
+    for (const key in params) {
+      if (params.hasOwnProperty(key)) {
+        const hiddenField = document.createElement('input');
+        hiddenField.type = 'hidden';
+        hiddenField.name = key;
+        hiddenField.value = params[key];
+  
+        form.appendChild(hiddenField);
+      }
+    }
+  
+    document.body.appendChild(form);
+    form.submit();
+  }
+
 function ajaxsearchbook(value) {
     if (searchTimeout)
         clearTimeout(searchTimeout);
@@ -10,6 +30,28 @@ function ajaxsearchbook(value) {
             console.log(data);
         });
     }, 600);
+}
+
+function ajaxstock(book, count)
+{
+    $.post("libstock.php", { "book": book, "count": count }, (result) => {
+        switch (result)
+        {
+            case "":
+                let elem = $("#stk" + book);
+                elem.text(parseInt(elem.html()) + parseInt(count));
+                break;
+            case "ERR_RESTRICT":
+                console.log("This action is restricted");
+                break;
+            case "ERR_EMPTY_INPUT":
+                console.log("User left the input empty");
+                break;
+            case "ERR_NOT_ENOUGH_BOOK":
+                console.log("Not enough books to remove");
+                break;
+        }
+    });
 }
 
 function ajaxaddtocart(book, count)

@@ -26,12 +26,12 @@
     <div class="container ">
         <nav>
             <div class="nav nav-tabs row text-center border-bottom-0 mt-3" id="nav-tab" role="tablist">
-                <a class="col active border-bottom mr-2 no-links-visible-pagecontact pb-2" id="nav-home-tab" data-toggle="tab" href="#about" role="tab" aria-controls="about" aria-selected="true">Hakkımızda</a>
-                <a class="col border-bottom ml-2 no-links-visible-pagecontact pb-2" id="nav-profile-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">İletişim</a>
+                <a class="col <?php if (!isset($_GET["contact"])) echo "active" ?> border-bottom mr-2 no-links-visible-pagecontact pb-2" id="nav-home-tab" data-toggle="tab" href="#about" role="tab" aria-controls="about" aria-selected="true">Hakkımızda</a>
+                <a class="col <?php if (isset($_GET["contact"])) echo "active" ?> border-bottom ml-2 no-links-visible-pagecontact pb-2" id="nav-profile-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">İletişim</a>
             </div>
         </nav>
         <div class="tab-content">
-            <div class="tab-pane fade show active" id="about" role="tabpanel" aria-labelledby="about-tab">
+            <div class="tab-pane fade <?php if (!isset($_GET["contact"])) echo "show active" ?>" id="about" role="tabpanel" aria-labelledby="about-tab">
             <div class="text-center">
                     <h6 class="col display-4">Hakkımızda</h6>
                 </div>
@@ -44,7 +44,7 @@
                     <p>Sınırları kaldıran, özgürleştiren, ulaşılabilir bir platform olmak.</p>
                 </div>
             </div>
-            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+            <div class="tab-pane fade <?php if (isset($_GET["contact"])) echo "show active" ?>" id="contact" role="tabpanel" aria-labelledby="contact-tab">
                 <div class="text-center">
                     <h6 class="col display-4">Bize Yazın</h6>
                 </div>

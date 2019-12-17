@@ -2,7 +2,6 @@
 
 use Google\Cloud\Datastore\Entity;
 
-require_once "vendor/autoload.php";
 require_once "libcon.php";
 require_once "libssn.php";
 
