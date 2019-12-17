@@ -51,41 +51,65 @@
                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Sepet
                         </button>
-                        <div class="dropdown-menu col-sm-12" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item overflow-hidden" href="#">
-                                <div class="row">
-                                    <div class="col">
-                                        <div class="list-group">
-                                            <a href="#" class="list-group-item list-group-item-action active">
-                                                <div class="d-flex w-100 justify-content-between">
-                                                    <h5 class="mb-1">List group item heading</h5>
-                                                    <small>3 days ago</small>
-                                                </div>
-                                                <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                                                <small>Donec id elit non mi porta.</small>
-                                            </a>
-                                            <a href="#" class="list-group-item list-group-item-action">
-                                                <div class="d-flex w-100 justify-content-between">
-                                                    <h5 class="mb-1">List group item heading</h5>
-                                                    <small class="text-muted">3 days ago</small>
-                                                </div>
-                                                <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                                                <small class="text-muted">Donec id elit non mi porta.</small>
-                                            </a>
-                                            <a href="#" class="list-group-item list-group-item-action">
-                                                <div class="d-flex w-100 justify-content-between">
-                                                    <h5 class="mb-1">List group item heading</h5>
-                                                    <small class="text-muted">3 days ago</small>
-                                                </div>
-                                                <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                                                <small class="text-muted">Donec id elit non mi porta.</small>
-                                            </a>
+                        <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton" style="width: 450px">
+                            <a class="dropdown-item" href="#">
+                                <div class="col">
+                                    <div class="row no-gutters border">
+                                        <div class="col-sm-2 align-self-center">
+                                            <img src="slider/hp1.jpg" class="card-img" alt="...">
+                                        </div>
+                                        <div class="col-sm-5">
+                                            <div class="card-body">
+                                                <p class="card-text">Kitap İsmi</p>
+                                                <p class="card-text"><small class="text-muted">Fiyat</small></p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
+                            <a class="dropdown-item" href="#">
+                                <div class="col">
+                                    <div class="row no-gutters border">
+                                        <div class="col-sm-2 align-self-center">
+                                            <img src="slider/hp1.jpg" class="card-img" alt="...">
+                                        </div>
+                                        <div class="col-sm-5">
+                                            <div class="card-body">
+                                                <p class="card-text">Kitap İsmi</p>
+                                                <p class="card-text"><small class="text-muted">Fiyat</small></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <a class="dropdown-item" href="#">
+                                <div class="col">
+                                    <div class="row no-gutters border">
+                                        <div class="col-sm-2 align-self-center">
+                                            <img src="slider/hp1.jpg" class="card-img" alt="...">
+                                        </div>
+                                        <div class="col-sm-5">
+                                            <div class="card-body">
+                                                <p class="card-text">Kitap İsmi</p>
+                                                <p class="card-text"><small class="text-muted">Fiyat</small></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <div href="#" class="dropdown-item text-center">
+                                <div class="col text-center">
+                                    <div class="row">
+                                        <div class="w-auto mx-auto"><span class="card-text"><small>Toplam 3 Ürün</small></span></div>
+                                    </div>
+                                    <div class="row text-center">
+                                    <div class="w-auto mx-auto"><h5 class="bold text-center">Toplam Fiyat ₺</h5></div>
+                                    </div>
+                                    <div class="row">
+                                        <button type="button" class="btn btn-danger d-block w-100">SEPETE GİT</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

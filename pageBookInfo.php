@@ -29,13 +29,12 @@ require_once "libssn.php";
         $con = DSConnection::open_or_get();
         $key = $con->key("Books", $_GET["book"]);
         $book = $con->lookup($key);
-        ?>
+    ?>
         <div class="container" style="margin-top: 50px">
             <div class="row">
                 <div class="col">
-                    <h1 class="display-5"><?php $book["name"] ?></h1>
+                    <h1 class="display-5"><?php echo $book["name"] ?></h1>
                 </div>
-
                 <div class="text-center col align-self-center">
                     <span class="fa fa-star checked"></span>
                     <span class="fa fa-star checked"></span>
@@ -43,8 +42,6 @@ require_once "libssn.php";
                     <span class="fa fa-star"></span>
                     <span class="fa fa-star"></span>
                 </div>
-
-
             </div>
             <div class="row">
                 <div class="col">

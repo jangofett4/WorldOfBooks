@@ -64,6 +64,11 @@ a.no-links-visible:active {
     color: white;
 }
 
+a.footer-no-links-visible:link {
+    color: white;
+    text-decoration: none;
+}
+
 
 /* visited link */
 
