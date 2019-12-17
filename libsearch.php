@@ -42,7 +42,8 @@ try {
                     "papercount" => $book["papercount"],
                     "language" => $book["language"],
                     "description" => $book["description"],
-                    "coverpath" => $book["coverpath"]
+                    "coverpath" => $book["coverpath"],
+                    "key" => $key
                 ]);
             }
         }

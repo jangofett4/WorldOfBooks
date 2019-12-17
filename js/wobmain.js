@@ -12,6 +12,20 @@ function ajaxsearchbook(value) {
     }, 600);
 }
 
+function ajaxaddtocart(book, count)
+{
+    $.get("libaddtocart.php", {"book": book, "count": count}, (result) => {
+        switch (result)
+        {
+            case "":
+                break;
+            case "ERR_EMPTY_INPUT":
+                console.log("User left the input empty");
+                break;
+        }
+    });
+}
+
 function ajaxlogout()
 {
     $.get("liblogout.php", (_) => {

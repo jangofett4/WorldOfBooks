@@ -57,7 +57,7 @@ include_once "libsearch.php";
                                         </div>
                                         <div class="col align-self-center">
                                             <div class="row m-2"><button type="button" class="btn btn-danger w-100">Sepete Ekle</button></div>
-                                            <div class="row m-2"><a class="w-100" href="pageBookInfo.php"><button type="button" class="btn btn-danger w-100">Detaya Git</button></a></div>
+                                            <div class="row m-2"><a class="w-100" href="pageBookInfo.php?book=<?php echo $book["key"] ?>"><button type="button" class="btn btn-danger w-100">Detaya Git</button></a></div>
                                         </div>
                                     </div>
                                 </div>
@@ -67,12 +67,13 @@ include_once "libsearch.php";
                 </div>
             </div>
         <?php } ?>
-        <?php include "templates/footer.php" ?>
-        <!-- Libraries -->
-        <script src="js/jquery-3.4.1.js"></script>
-        <script src="js/popper.min.js"></script>
-        <script src="js/bootstrap.js"></script>
-        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.4.5/fuse.min.js"></script> -->
+    </div>
+    <?php include "templates/footer.php" ?>
+    <!-- Libraries -->
+    <script src="js/jquery-3.4.1.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.4.5/fuse.min.js"></script> -->
 </body>
 
 </html>
