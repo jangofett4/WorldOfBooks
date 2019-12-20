@@ -23,7 +23,7 @@
 <body>
     <?php include "templates/nav.php" ?>
 
-    <div class="container" style="height: 100vh;">
+    <div class="container" >
         <nav>
             <div class="nav nav-tabs row text-center border-bottom-0 mt-3" id="nav-tab" role="tablist">
                 <a class="col <?php if (!isset($_GET["contact"])) echo "active" ?> border-bottom mr-2 no-links-visible-pagecontact pb-2" id="nav-home-tab" data-toggle="tab" href="#about" role="tab" aria-controls="about" aria-selected="true">Hakkımızda</a>
@@ -40,8 +40,13 @@
                     <p>İnsanların zihnen özgürleşmesinin ve kişisel gelişimlerinin önündeki engelleri kaldırarak kitaplara kolayca ulaşmasını sağlayarak en çok sevilen ve tercih edilen deneyim markası olmak.</p>
                 </div>
                 <div>
-                    <h3 class="display-4 mb-3" style="font-size: 30px">World of Books Marka Vizyonu</h3>
+                    <h3 class="display-4 mb-3" style="font-size: 30px">World of Books Marka Misyonu</h3>
                     <p>Sınırları kaldıran, özgürleştiren, ulaşılabilir bir platform olmak.</p>
+                </div>
+                
+                <div class="mt-sm-5">
+                    <p>"Bir millet eğitim ordusuna sahip olmadıkça, savaş meydanlarında ne kadar parlak zaferler elde ederse etsin, o zaferlerin kalıcı sonuçlar vermesi ancak eğitim ordusuyla mümkündür."</p>
+                    <h3 class="display-4 mb-3 text-right" style="font-size: 30px">M.K. ATATÜRK</h3>
                 </div>
             </div>
             <div class="tab-pane fade <?php if (isset($_GET["contact"])) echo "show active" ?>" id="contact" role="tabpanel" aria-labelledby="contact-tab">
@@ -72,7 +77,7 @@
             </div>
         </div>
     </div>
-    <div ><?php include "templates/footer.php" ?></div>
+    <div style="margin-top:20%;" ><?php include "templates/footer.php" ?></div>
 
 
     <!-- Libraries -->
