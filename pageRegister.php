@@ -85,7 +85,7 @@
             </div>
         </div>
     </div>
-    <div class="fixed-bottom"><?php include "templates/footer.php" ?></div>
+    <div style="margin-top: 12%"><?php include "templates/footer.php" ?></div>
     <!-- Libraries -->
     <script src="js/jquery-3.4.1.js"></script>
     <script src="js/popper.min.js"></script>

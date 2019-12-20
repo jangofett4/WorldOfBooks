@@ -23,7 +23,7 @@
 <body>
     <?php include "templates/nav.php" ?>
 
-    <div class="container ">
+    <div class="container" style="height: 100vh;">
         <nav>
             <div class="nav nav-tabs row text-center border-bottom-0 mt-3" id="nav-tab" role="tablist">
                 <a class="col <?php if (!isset($_GET["contact"])) echo "active" ?> border-bottom mr-2 no-links-visible-pagecontact pb-2" id="nav-home-tab" data-toggle="tab" href="#about" role="tab" aria-controls="about" aria-selected="true">Hakkımızda</a>
@@ -49,7 +49,7 @@
                     <h6 class="col display-4">Bize Yazın</h6>
                 </div>
                 <div class="">
-                    <form method="POST" action="mailto.php">
+                    <form action="https://formspree.io/xyykzydp" method="POST" target="_blank" >
                     <div>
                         E-Posta
                         <input type="text" class="form-control" placeholder="E-Posta" name="email">
@@ -72,7 +72,7 @@
             </div>
         </div>
     </div>
-    <div class="fixed-bottom"><?php include "templates/footer.php" ?></div>
+    <div ><?php include "templates/footer.php" ?></div>
 
 
     <!-- Libraries -->
