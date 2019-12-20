@@ -1,3 +1,7 @@
+<?php
+require_once "libcon.php";
+require_once "libssn.php";
+?>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="mx-auto justify-content-md-center container">
         <div class="row col-lg justify-content-md-center">
@@ -25,13 +29,13 @@
                 </div>
                 <div class="navbar-nav col-auto">
                     <?php
-                                                                                                                                                                    if (!isset($_SESSION["logged"])) {
+                    if (!isset($_SESSION["logged"])) {
                     ?>
 
                         <a class="nav-item nav-link active mr-sm-2" href="pageLogin.php">Giriş Yap <span class="sr-only">(current)</span></a>
 
                     <?php
-                                                                                                                                                                    } else {
+                    } else {
                     ?>
 
                         <a class="nav-link dropdown-toggle mr-2" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -45,68 +49,93 @@
                         </div>
 
                     <?php
-                                                                                                                                                                    }
+                    }
                     ?>
-                    <div class="dropdown">
+                    <div class="justify-content-center">
                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Sepet
                         </button>
-                        <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton" style="width: 450px">
-                            <a class="dropdown-item" href="#">
-                                <div class="col">
-                                    <div class="row no-gutters border">
-                                        <div class="col-sm-2 align-self-center">
-                                            <img src="slider/hp1.jpg" class="card-img" alt="...">
-                                        </div>
-                                        <div class="col-sm-5">
-                                            <div class="card-body">
-                                                <p class="card-text">Kitap İsmi</p>
-                                                <p class="card-text"><small class="text-muted">Fiyat</small></p>
+                        <div class="dropdown-menu text-center p-0" aria-labelledby="dropdownMenuButton" style="width: 23rem">
+                            <?php
+                            $con = DSConnection::open_or_get();
+                            $ssncart = LibSSN::getvnd("cart");
+                            $logged = LibSSN::getnd("logged");
+                            $total = 0;
+                            $itemcount = 0;
+                            $totalcount = 0;
+                            if (!$logged && $ssncart != null) {
+                                foreach ($ssncart as $id => $count) {
+                                    $itemcount++;
+                                    $totalcount += $count;
+                                    $key = $con->key("Books", $id);
+                                    $book = $con->lookup($key);
+                                    $total += $book["cost"] * $count;
+                            ?>
+                                    <a class="dropdown-item px-sm-2" href="#">
+                                        <div class="w-100">
+                                            <div class="row no-gutters border">
+                                                <div class="col-sm-2 align-self-center ml-sm-2">
+                                                    <img src="<?php echo $book["coverpath"] ?>" class="card-img" alt="...">
+                                                </div>
+                                                <div class="col">
+                                                    <div class="card-body text-wrap">
+                                                        <p class="card-text"><?php echo $book["name"] ?><?php if ($count > 1) echo " x " . $count ?></p>
+                                                        <?php if ($count > 1) { ?>
+                                                            <p class="card-text">Toplam: <small class="text-muted"><?php echo $book["cost"] ?> x <?php echo $count ?> = <b><?php echo $book["cost"] * $count ?> ₺</b></small></p>
+                                                        <?php } else { ?>
+                                                            <p class="card-text">Toplam: <small class="text-muted"><b><?php echo $book["cost"] ?> ₺</b></small></p>
+                                                        <?php } ?>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </a>
-                            <a class="dropdown-item" href="#">
-                                <div class="col">
-                                    <div class="row no-gutters border">
-                                        <div class="col-sm-2 align-self-center">
-                                            <img src="slider/hp1.jpg" class="card-img" alt="...">
-                                        </div>
-                                        <div class="col-sm-5">
-                                            <div class="card-body">
-                                                <p class="card-text">Kitap İsmi</p>
-                                                <p class="card-text"><small class="text-muted">Fiyat</small></p>
+                                    </a>
+                                <?php
+                                }
+                            } elseif ($logged) {
+                                $usercart = LibSSN::getvnd("user_cart");
+                                foreach ($usercart as $id => $count) {
+                                    $itemcount++;
+                                    $totalcount += $count;
+                                    $key = $con->key("Books", $id);
+                                    $book = $con->lookup($key);
+                                    $total += $book["cost"] * $count;
+                                ?>
+                                    <a class="dropdown-item px-sm-2" href="#">
+                                        <div class="w-100">
+                                            <div class="row no-gutters border">
+                                                <div class="col-sm-2 align-self-center ml-sm-2">
+                                                    <img src="<?php echo $book["coverpath"] ?>" class="card-img" alt="...">
+                                                </div>
+                                                <div class="col">
+                                                    <div class="card-body text-wrap">
+                                                        <p class="card-text"><?php echo $book["name"] ?><?php if ($count > 1) echo " x " . $count ?></p>
+                                                        <?php if ($count > 1) { ?>
+                                                            <p class="card-text">Toplam: <small class="text-muted"><?php echo $book["cost"] ?> x <?php echo $count ?> = <b><?php echo $book["cost"] * $count ?> ₺</b></small></p>
+                                                        <?php } else { ?>
+                                                            <p class="card-text">Toplam: <small class="text-muted"><b><?php echo $book["cost"] ?> ₺</b></small></p>
+                                                        <?php } ?>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </a>
-                            <a class="dropdown-item" href="#">
-                                <div class="col">
-                                    <div class="row no-gutters border">
-                                        <div class="col-sm-2 align-self-center">
-                                            <img src="slider/hp1.jpg" class="card-img" alt="...">
-                                        </div>
-                                        <div class="col-sm-5">
-                                            <div class="card-body">
-                                                <p class="card-text">Kitap İsmi</p>
-                                                <p class="card-text"><small class="text-muted">Fiyat</small></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                            <div href="#" class="dropdown-item text-center">
+                                    </a>
+                            <?php
+                                }
+                            }
+                            ?>
+                            <div href="#" class="p-sm-4 text-center">
                                 <div class="col text-center">
                                     <div class="row">
-                                        <div class="w-auto mx-auto"><span class="card-text"><small>Toplam 3 Ürün</small></span></div>
+                                        <div class="w-auto mx-auto"><span class="card-text"><small>Toplam <?php echo $totalcount ?> ürün</small></span></div>
                                     </div>
                                     <div class="row text-center">
-                                    <div class="w-auto mx-auto"><h5 class="bold text-center">Toplam Fiyat ₺</h5></div>
+                                        <div class="w-auto mx-auto">
+                                            <h5 class="bold text-center"><?php echo $total ?> ₺</h5>
+                                        </div>
                                     </div>
                                     <div class="row">
-                                        <button type="button" class="btn btn-danger d-block w-100">SEPETE GİT</button>
+                                        <a href="pageCart.php" class="no-links-visible w-100"><button type="button" class="btn btn-danger d-block w-100">SEPETE GİT</button></a>
                                     </div>
                                 </div>
                             </div>

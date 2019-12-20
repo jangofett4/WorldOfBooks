@@ -1,3 +1,7 @@
+<?php
+require_once "libcon.php";
+require_once "libssn.php";
+?>
 <!doctype html>
 <html lang="tr">
 
@@ -6,11 +10,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <title>World Of Books</title>
-    <style>
-        .checked {
-            color: orange;
-        }
-    </style>
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/all.css">
     <link rel="stylesheet" href="css/wob.css">
@@ -35,102 +34,91 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row no-gutters border">
-                        <div class="col-2 align-self-center">
-                            <img src="slider/hp1.jpg" class="card-img card-img-search " alt="...">
-                        </div>
-                        <div class="col-4 align-self-center">
-                            kitap ismi
-                        </div>
-                        <div class="col-6">
-                            <div class="card-body">
-                                <div class="row ">
-                                    <div class="col align-self-center text-center">
-                                        <span>
-                                            <button class="btn btn-circle btn-dark btn-sm"><span class="fa fa-minus"></span></button>
-                                            0
-                                            <button class="btn btn-circle btn-dark btn-sm"><span class="fa fa-plus"></span></button>
-                                        </span>
-                                    </div>
-                                    <div class="col align-self-center text-center">
-                                        <h5 class="bold">Fiyat ₺</h5>
-                                    </div>
-                                    <div class="col align-self-center text-center">
-                                        <h5 class="bold">Toplam Fiyat ₺</h5>
-                                    </div>
-                                    <div class="col align-self-center text-center">
-                                        <span>
-                                            <button type="button" class="btn btn-danger w-100"><span class="fa fa-trash"></span></button>
-                                        </span>
+                    <?php
+                    $con = DSConnection::open_or_get();
+                    $ssncart = LibSSN::getvnd("cart");
+                    $logged = LibSSN::getnd("logged");
+                    $total = 0;
+                    $itemcount = 0;
+                    $totalcount = 0;
+                    if (!$logged && $ssncart != null) {
+                        foreach ($ssncart as $id => $count) {
+                            $itemcount++;
+                            $totalcount += $count;
+                            $key = $con->key("Books", $id);
+                            $book = $con->lookup($key);
+                            $total += $book["cost"] * $count;
+                    ?>
+                            <div class="row no-gutters border">
+                                <div class="col-2 align-self-center">
+                                    <img src="<?php echo $book["coverpath"] ?>" class="card-img card-img-search" alt="...">
+                                </div>
+                                <div class="col-4 align-self-center">
+                                    <?php echo $book["name"] ?>
+                                </div>
+                                <div class="col-6 align-self-center">
+                                    <div class="card-body">
+                                        <div class="row ">
+                                            <div class="col align-self-center text-center">
+                                                <?php echo $count ?>
+                                            </div>
+                                            <div class="col align-self-center text-center">
+                                                <h5 class="bold"><?php echo $book["cost"] ?> ₺</h5>
+                                            </div>
+                                            <div class="col align-self-center text-center">
+                                                <h5 class="bold"><?php echo $book["cost"] * $count ?> ₺</h5>
+                                            </div>
+                                            <div class="col align-self-center text-center">
+                                                <span>
+                                                    <a class="no-links-visible text-danger pointer"><span class="fa fa-trash fa-2x"></span></a>
+                                                </span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="row no-gutters border">
-                        <div class="col-2 align-self-center">
-                            <img src="slider/hp1.jpg" class="card-img card-img-search " alt="...">
-                        </div>
-                        <div class="col-4 align-self-center">
-                            kitap ismi
-                        </div>
-                        <div class="col-6">
-                            <div class="card-body">
-                                <div class="row ">
-                                    <div class="col align-self-center text-center">
-                                        <span>
-                                            <button class="btn btn-circle btn-dark btn-sm"><span class="fa fa-minus"></span></button>
-                                            0
-                                            <button class="btn btn-circle btn-dark btn-sm"><span class="fa fa-plus"></span></button>
-                                        </span>
-                                    </div>
-                                    <div class="col align-self-center text-center">
-                                        <h5 class="bold">Fiyat ₺</h5>
-                                    </div>
-                                    <div class="col align-self-center text-center">
-                                        <h5 class="bold">Toplam Fiyat ₺</h5>
-                                    </div>
-                                    <div class="col align-self-center text-center">
-                                        <span>
-                                            <button type="button" class="btn btn-danger w-100 "><span class="fa fa-trash"></span></button>
-                                        </span>
+                        <?php
+                        }
+                    } elseif ($logged) {
+                        $usercart = LibSSN::getvnd("user_cart");
+                        foreach ($usercart as $id => $count) {
+                            $itemcount++;
+                            $totalcount += $count;
+                            $key = $con->key("Books", $id);
+                            $book = $con->lookup($key);
+                            $total += $book["cost"] * $count;
+                        ?>
+                            <div class="row no-gutters border mb-sm-2">
+                                <div class="col-2 align-self-center">
+                                    <img src="<?php echo $book["coverpath"] ?>" class="card-img card-img-search" alt="...">
+                                </div>
+                                <div class="col-4 align-self-center">
+                                    <?php echo $book["name"] ?>
+                                </div>
+                                <div class="col-6 align-self-center">
+                                    <div class="card-body">
+                                        <div class="row ">
+                                            <div class="col align-self-center text-center">
+                                                <?php echo $count ?>
+                                            </div>
+                                            <div class="col align-self-center text-center">
+                                                <h5 class="bold"><?php echo $book["cost"] ?> ₺</h5>
+                                            </div>
+                                            <div class="col align-self-center text-center">
+                                                <h5 class="bold"><?php echo $book["cost"] * $count ?> ₺</h5>
+                                            </div>
+                                            <div class="col align-self-center text-center">
+                                                <span>
+                                                    <a class="no-links-visible text-danger pointer"><span class="fa fa-trash fa-2x"></span></a>
+                                                </span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="row no-gutters border">
-                        <div class="col-2 align-self-center">
-                            <img src="slider/hp1.jpg" class="card-img card-img-search " alt="...">
-                        </div>
-                        <div class="col-4 align-self-center">
-                            kitap ismi
-                        </div>
-                        <div class="col-6">
-                            <div class="card-body">
-                                <div class="row ">
-                                    <div class="col align-self-center text-center">
-                                        <span>
-                                            <button class="btn btn-circle btn-dark btn-sm"><span class="fa fa-minus"></span></button>
-                                            0
-                                            <button class="btn btn-circle btn-dark btn-sm"><span class="fa fa-plus"></span></button>
-                                        </span>
-                                    </div>
-                                    <div class="col align-self-center text-center">
-                                        <h5 class="bold">Fiyat ₺</h5>
-                                    </div>
-                                    <div class="col align-self-center text-center">
-                                        <h5 class="bold">Toplam Fiyat ₺</h5>
-                                    </div>
-                                    <div class="col align-self-center text-center">
-                                        <span>
-                                            <button type="button" class="btn btn-danger w-100"><span class="fa fa-trash"></span></button>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <?php
+                        }
+                    } ?>
                     <div class="row">
                         <div class="col-12">
                             <div class="w-25" style="float: right">
@@ -139,7 +127,8 @@
                                         <h5>Ara Toplam :</h5>
                                     </div>
                                     <div class="col">
-                                        <h4>200000 ₺</h4>
+                                        <h4><?php echo $total ?>
+                                         ₺</h4>
                                     </div>
                                 </div>
                                 <div class="row">

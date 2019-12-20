@@ -23,10 +23,14 @@ class LibCart
             LibCart::$ssncart = LibSSN::getvnd("cart");
             if (!isset(LibCart::$user["cart"])) {
                 if (LibCart::$ssncart != null)
-                LibCart::$user["cart"] = LibCart::$ssncart;
+                {
+                    LibCart::$user["cart"] = LibCart::$ssncart;
+                    LibSSN::setv("user_cart", LibCart::$ssncart);
+                }
                 else
                 {
                     LibCart::$user["cart"] = array();
+                    LibSSN::setv("user_cart", array());
                 }
                 
                 LibSSN::unset("cart");
@@ -38,11 +42,17 @@ class LibCart
             } else {
                 if (LibCart::$ssncart != null) {
                     $usercart = LibCart::$user["cart"];
+                    $scart = LibSSN::getvnd("user_cart");
                     foreach (LibCart::$ssncart as $key => $item)
                         if (!isset($usercart[$key]))
+                        {
                             $usercart[$key] = $item;
+                            $scart[$key] = $item;
+                            LibSSN::setv("user_cart", $scart);
+                        }
                     $user = LibCart::$user;
                     $user["cart"] = $usercart;
+                    LibSSN::setv("user_cart", $scart);
                     /** @var Entity $user */ // dumb intelliphense
                     LibCart::$con->update($user);
                     LibCart::$ssncart == null; // empty session cart
@@ -72,12 +82,18 @@ class LibCart
             {
                 $cart = LibCart::$user["cart"];
                 $cart[$book] += $count;
+                $scart = LibSSN::getvnd("user_cart");
+                $scart[$book] += $count;
+                LibSSN::setv("user_cart", $scart);
                 LibCart::$user["cart"] = $cart;
             }
             else
             {
                 $cart = LibCart::$user["cart"];
                 $cart[$book] = $count;
+                $scart = LibSSN::getvnd("user_cart");
+                $scart[$book] = $count;
+                LibSSN::setv("user_cart", $scart);
                 LibCart::$user["cart"] = $cart;
             }
             LibCart::$con->update(LibCart::$user);
@@ -108,6 +124,9 @@ class LibCart
             {
                 $cart = LibCart::$user["cart"];
                 unset($cart[$book]);
+                $scart = LibSSN::getvnd("user_cart");
+                unset($scart[$book]);
+                LibSSN::setv("user_cart", $scart);
                 LibCart::$user["cart"] = $cart;
             }
             LibCart::$con->update(LibCart::$user);

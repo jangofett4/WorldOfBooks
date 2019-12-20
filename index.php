@@ -75,7 +75,7 @@ require_once "libcon.php";
             ->limit(20);
         $result = $con->runQuery($query);
         ?>
-        <div class="row text-center justify-content-md-center">
+        <div class="row text-center justify-content-center">
             <?php /** @var Entity $book */ foreach ($result as $book) { ?>
             <a class="no-links-visible" href="pageBookInfo.php?book=<?php echo $book->key()->pathEndIdentifier() ?>">
                 <div class="col-sm card m-1" style="width: 17rem;">

@@ -1,3 +1,7 @@
+.pointer {
+    cursor: pointer;
+}
+
 .div-center {
     margin-top: auto;
     margin-bottom: auto;

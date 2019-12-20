@@ -111,6 +111,31 @@ function alertClear(elem)
     $(elem).html("");
 }
 
+function ajaxdelete(book)
+{
+    let modal = $("#deleteModal");
+    modal.modal();
+    $.post("libdeletebook.php", { "book": book }, (result) => {
+        switch (result)
+        {
+            case "ERR_EMPTY_INPUT":
+                console.log("User left the input empty");
+                break;
+            case "ERR_RESTRICT":
+                window.location.assign("panel.php?restrict=1");
+                break;
+            case "ERR_CONNECTION":
+                console.log("Connection error");
+                break;
+            case "":
+                $("#bookrow" + book).toggleClass("d-none");
+                break;
+
+        }
+    });
+    modal.modal("hide");
+}
+
 function ajaxeditdone()
 {
     let modal = $("#editModal");

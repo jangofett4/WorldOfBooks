@@ -24,6 +24,14 @@ use Google\Cloud\Datastore\Entity;
             color: orange;
         }
 
+        .point12 {
+            font-size: 1.2em;
+        }
+
+        .pointer {
+            cursor: pointer;
+        }
+
         /* Chrome, Safari, Edge, Opera */
         input::-webkit-outer-spin-button,
         input::-webkit-inner-spin-button {
@@ -318,52 +326,56 @@ use Google\Cloud\Datastore\Entity;
                         <?php } ?>
                         <?php foreach ($books as $book) {
                             $key = $book["key"]; ?>
-                            <div class="row p-2">
-                                <p class="d-none" id="btp<?php echo $key ?>"><?php echo $book['type'] ?></p>
-                                <p class="d-none" id="bpd<?php echo $key ?>"><?php echo $book['published'] ?></p>
-                                <p class="d-none" id="bpc<?php echo $key ?>"><?php echo $book['papercount'] ?></p>
-                                <p class="d-none" id="bln<?php echo $key ?>"><?php echo $book['language'] ?></p>
-                                <p class="d-none" id="bds<?php echo $key ?>"><?php echo $book['description'] ?></p>
+                            <div class="row" id="bookrow<?php echo $key ?>">
                                 <div class="col">
-                                    <div class="col card mb-3k border mx-auto p-3">
-                                        <div class="row no-gutters">
-                                            <div class="col-auto">
-                                                <img src="<?php echo $book["coverpath"] ?>" class="card-img card-img-fluid card-img-search" alt="...">
-                                            </div>
-                                            <div class="col">
-                                                <div class="card-body h-100">
-                                                    <div class="row h-100">
-                                                        <div class="col-sm-5 align-self-center ">
-                                                            <h5 class="card-title" id="bnm<?php echo $key; ?>"><?php echo $book["name"] ?></h5>
-                                                            <p class="card-text" id="bat<?php echo $key; ?>"><?php echo $book["author"] ?></p>
-                                                            <p class="card-text" id="bpb<?php echo $key; ?>"><?php echo $book["publisher"] ?></p>
-                                                            <p class="card-text"><b>Stokta: </b><span id="stk<?php echo $key ?>"><?php echo $book["stock"] ?></span></p>
-                                                        </div>
-                                                        <div class="col-sm-2 align-self-center ">
-                                                            <h5 class="bold"><span id="bct<?php echo $key; ?>"><?php echo $book["cost"] ?></span> ₺</h5>
-                                                        </div>
-                                                        <div class="col-sm-2 text-center align-self-center">
-                                                            <div class="spinner-border d-none" role="status" id="ld<?php echo $key ?>">
-                                                                <span class="sr-only">Loading...</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col align-self-center">
-                                                            <div class="row m-2">
-                                                                <button type="button" class="btn btn-danger w-100" id="be<?php echo $key ?>" onclick="ajaxeditbook(<?php echo $key ?>)">Düzenle</button>
-                                                            </div>
-                                                            <form>
-                                                                <div class="row m-2 ">
-                                                                    <input type="number" class="form-control" placeholder="Stok" id="<?php echo $key ?>" value="0">
+                                    <div class="row p-2">
+                                        <p class="d-none" id="btp<?php echo $key ?>"><?php echo $book['type'] ?></p>
+                                        <p class="d-none" id="bpd<?php echo $key ?>"><?php echo $book['published'] ?></p>
+                                        <p class="d-none" id="bpc<?php echo $key ?>"><?php echo $book['papercount'] ?></p>
+                                        <p class="d-none" id="bln<?php echo $key ?>"><?php echo $book['language'] ?></p>
+                                        <p class="d-none" id="bds<?php echo $key ?>"><?php echo $book['description'] ?></p>
+                                        <div class="col">
+                                            <div class="col card mb-3k border mx-auto p-3">
+                                                <div class="row no-gutters">
+                                                    <div class="col-auto">
+                                                        <img src="<?php echo $book["coverpath"] ?>" class="card-img card-img-fluid card-img-search" alt="...">
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="card-body h-100">
+                                                            <div class="row h-100">
+                                                                <div class="col-sm-5 align-self-center ">
+                                                                    <h5 class="card-title" id="bnm<?php echo $key; ?>"><?php echo $book["name"] ?></h5>
+                                                                    <p class="card-text" id="bat<?php echo $key; ?>"><?php echo $book["author"] ?></p>
+                                                                    <p class="card-text" id="bpb<?php echo $key; ?>"><?php echo $book["publisher"] ?></p>
+                                                                    <p class="card-text"><b>Stokta: </b><span id="stk<?php echo $key ?>"><?php echo $book["stock"] ?></span></p>
                                                                 </div>
-                                                                <div class="row m-2">
-                                                                    <div class="col">
-                                                                        <button type="button" class="btn btn-circle btn-dark d-block mx-auto" id="bm<?php echo $key ?>" onclick="ajaxstock(<?php echo $key ?>, -$('#<?php echo $key ?>')[0].value)"> <span class="fa fa-minus"></span> </button>
-                                                                    </div>
-                                                                    <div class="col">
-                                                                        <button type="button" class="btn btn-circle btn-dark d-block mx-auto" id="bp<?php echo $key ?>" onclick="ajaxstock(<?php echo $key ?>, $('#<?php echo $key ?>')[0].value)"> <span class="fa fa-plus"></span></button>
+                                                                <div class="col-sm-2 align-self-center ">
+                                                                    <h5 class="bold"><span id="bct<?php echo $key; ?>"><?php echo $book["cost"] ?></span> ₺</h5>
+                                                                </div>
+                                                                <div class="col-sm-2 text-center align-self-center">
+                                                                    <div class="spinner-border d-none" role="status" id="ld<?php echo $key ?>">
+                                                                        <span class="sr-only">Loading...</span>
                                                                     </div>
                                                                 </div>
-                                                            </form>
+                                                                <div class="col align-self-center">
+                                                                    <div class="row m-2">
+                                                                        <button type="button" class="btn btn-danger w-100" id="be<?php echo $key ?>" onclick="ajaxeditbook(<?php echo $key ?>)">Düzenle</button>
+                                                                    </div>
+                                                                    <form>
+                                                                        <div class="row m-2 ">
+                                                                            <input type="number" class="form-control" placeholder="Stok" id="<?php echo $key ?>" value="0">
+                                                                        </div>
+                                                                        <div class="row m-2">
+                                                                            <div class="col">
+                                                                                <button type="button" class="btn btn-circle btn-dark d-block mx-auto" id="bm<?php echo $key ?>" onclick="ajaxstock(<?php echo $key ?>, -$('#<?php echo $key ?>')[0].value)"> <span class="fa fa-minus"></span> </button>
+                                                                            </div>
+                                                                            <div class="col">
+                                                                                <button type="button" class="btn btn-circle btn-dark d-block mx-auto" id="bp<?php echo $key ?>" onclick="ajaxstock(<?php echo $key ?>, $('#<?php echo $key ?>')[0].value)"> <span class="fa fa-plus"></span></button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -371,9 +383,26 @@ use Google\Cloud\Datastore\Entity;
                                         </div>
                                     </div>
                                 </div>
+                                <div class="col-auto align-self-center pointer">
+                                    <a onclick="ajaxdelete(<?php echo $key ?>)"><span class="fa fa-trash text-danger point12"></span></a>
+                                </div>
                             </div>
                         <?php } ?>
                     <?php } ?>
+                    <div class="modal fade" data-backdrop="static" id="deleteModal" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal-sm modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title mx-auto" id="exampleModalLabel">Kitap Siliniyor</h5>
+                                </div>
+                                <div class="modal-body mx-auto">
+                                    <div class="spinner-border" role="status">
+                                        <span class="sr-only">Loading...</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="modal fade" data-backdrop="static" id="editModal" tabindex="-1" role="dialog" aria-hidden="true">
                         <div class="modal-lg modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">

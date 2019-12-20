@@ -30,6 +30,7 @@ foreach ($result as $userdata)
     $_SESSION["user_surname"] = $userdata["surname"];
     $_SESSION["user_email"] = $userdata["email"];
     $_SESSION["user_password"] = $userdata["password"];
+    $_SESSION["user_cart"] = $userdata["cart"];
     $_SESSION["logged"] = true;
 
     LibCart::init(); // add previously added items into users cart
