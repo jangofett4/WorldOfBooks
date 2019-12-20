@@ -133,6 +133,9 @@ class LibCart
         }
         else
             if (isset(LibCart::$ssncart[$book]))
+            {
                 unset(LibCart::$ssncart[$book]);
+                LibSSN::setv("cart", LibCart::$ssncart);
+            }
     }
 }

@@ -130,7 +130,6 @@ function ajaxdelete(book)
             case "":
                 $("#bookrow" + book).toggleClass("d-none");
                 break;
-
         }
     });
     modal.modal("hide");
@@ -201,6 +200,29 @@ function ajaxaddtocart(book, count)
         switch (result)
         {
             case "":
+                break;
+            case "ERR_EMPTY_INPUT":
+                console.log("User left the input empty");
+                break;
+        }
+    }).done(() => {
+        let cart = $("#navCart");
+        $.get("libcartlist.php", {}, (result) => {
+            cart.html(result);
+            $("#cartItems").text("Toplam " + $("#cartTotalItems").text() + " ürün");
+            $("#cartValue").text($("#cartTotalValue").text() + " ₺");
+        });
+    });
+}
+
+function ajaxremovefromcart(book)
+{
+    $.get("libremovefromcart.php", { "book": book }, (result) => {
+        switch (result)
+        {
+            case "":
+                $("#cart" + book).toggleClass("d-none");
+                $("#bigcart" + book).toggleClass("d-none");
                 break;
             case "ERR_EMPTY_INPUT":
                 console.log("User left the input empty");

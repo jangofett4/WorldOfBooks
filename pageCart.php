@@ -49,7 +49,7 @@ require_once "libssn.php";
                             $book = $con->lookup($key);
                             $total += $book["cost"] * $count;
                     ?>
-                            <div class="row no-gutters border">
+                            <div class="row no-gutters border mb-sm-2" id="bigcart<?php echo $id ?>">
                                 <div class="col-2 align-self-center">
                                     <img src="<?php echo $book["coverpath"] ?>" class="card-img card-img-search" alt="...">
                                 </div>
@@ -70,7 +70,7 @@ require_once "libssn.php";
                                             </div>
                                             <div class="col align-self-center text-center">
                                                 <span>
-                                                    <a class="no-links-visible text-danger pointer"><span class="fa fa-trash fa-2x"></span></a>
+                                                    <a class="no-links-visible text-danger pointer" onclick="ajaxremovefromcart(<?php echo $id ?>)"><span class="fa fa-trash fa-2x"></span></a>
                                                 </span>
                                             </div>
                                         </div>
@@ -88,7 +88,7 @@ require_once "libssn.php";
                             $book = $con->lookup($key);
                             $total += $book["cost"] * $count;
                         ?>
-                            <div class="row no-gutters border mb-sm-2">
+                            <div class="row no-gutters border mb-sm-2" id="bigcart<?php echo $id ?>">
                                 <div class="col-2 align-self-center">
                                     <img src="<?php echo $book["coverpath"] ?>" class="card-img card-img-search" alt="...">
                                 </div>
@@ -109,7 +109,7 @@ require_once "libssn.php";
                                             </div>
                                             <div class="col align-self-center text-center">
                                                 <span>
-                                                    <a class="no-links-visible text-danger pointer"><span class="fa fa-trash fa-2x"></span></a>
+                                                    <a class="no-links-visible text-danger pointer" onclick="ajaxremovefromcart(<?php echo $id ?>)"><span class="fa fa-trash fa-2x"></span></a>
                                                 </span>
                                             </div>
                                         </div>

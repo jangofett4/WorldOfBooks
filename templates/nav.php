@@ -56,82 +56,17 @@ require_once "libssn.php";
                             Sepet
                         </button>
                         <div class="dropdown-menu text-center p-0" aria-labelledby="dropdownMenuButton" style="width: 23rem">
-                            <?php
-                            $con = DSConnection::open_or_get();
-                            $ssncart = LibSSN::getvnd("cart");
-                            $logged = LibSSN::getnd("logged");
-                            $total = 0;
-                            $itemcount = 0;
-                            $totalcount = 0;
-                            if (!$logged && $ssncart != null) {
-                                foreach ($ssncart as $id => $count) {
-                                    $itemcount++;
-                                    $totalcount += $count;
-                                    $key = $con->key("Books", $id);
-                                    $book = $con->lookup($key);
-                                    $total += $book["cost"] * $count;
-                            ?>
-                                    <a class="dropdown-item px-sm-2" href="#">
-                                        <div class="w-100">
-                                            <div class="row no-gutters border">
-                                                <div class="col-sm-2 align-self-center ml-sm-2">
-                                                    <img src="<?php echo $book["coverpath"] ?>" class="card-img" alt="...">
-                                                </div>
-                                                <div class="col">
-                                                    <div class="card-body text-wrap">
-                                                        <p class="card-text"><?php echo $book["name"] ?><?php if ($count > 1) echo " x " . $count ?></p>
-                                                        <?php if ($count > 1) { ?>
-                                                            <p class="card-text">Toplam: <small class="text-muted"><?php echo $book["cost"] ?> x <?php echo $count ?> = <b><?php echo $book["cost"] * $count ?> ₺</b></small></p>
-                                                        <?php } else { ?>
-                                                            <p class="card-text">Toplam: <small class="text-muted"><b><?php echo $book["cost"] ?> ₺</b></small></p>
-                                                        <?php } ?>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                <?php
-                                }
-                            } elseif ($logged) {
-                                $usercart = LibSSN::getvnd("user_cart");
-                                foreach ($usercart as $id => $count) {
-                                    $itemcount++;
-                                    $totalcount += $count;
-                                    $key = $con->key("Books", $id);
-                                    $book = $con->lookup($key);
-                                    $total += $book["cost"] * $count;
-                                ?>
-                                    <a class="dropdown-item px-sm-2" href="#">
-                                        <div class="w-100">
-                                            <div class="row no-gutters border">
-                                                <div class="col-sm-2 align-self-center ml-sm-2">
-                                                    <img src="<?php echo $book["coverpath"] ?>" class="card-img" alt="...">
-                                                </div>
-                                                <div class="col">
-                                                    <div class="card-body text-wrap">
-                                                        <p class="card-text"><?php echo $book["name"] ?><?php if ($count > 1) echo " x " . $count ?></p>
-                                                        <?php if ($count > 1) { ?>
-                                                            <p class="card-text">Toplam: <small class="text-muted"><?php echo $book["cost"] ?> x <?php echo $count ?> = <b><?php echo $book["cost"] * $count ?> ₺</b></small></p>
-                                                        <?php } else { ?>
-                                                            <p class="card-text">Toplam: <small class="text-muted"><b><?php echo $book["cost"] ?> ₺</b></small></p>
-                                                        <?php } ?>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                            <?php
-                                }
-                            }
-                            ?>
+                            <div id="navCart">    
+                                <?php require_once "cart.php" ?>
+                            </div>
                             <div href="#" class="p-sm-4 text-center">
                                 <div class="col text-center">
                                     <div class="row">
-                                        <div class="w-auto mx-auto"><span class="card-text"><small>Toplam <?php echo $totalcount ?> ürün</small></span></div>
+                                        <div class="w-auto mx-auto"><span class="card-text"><small id="cartItems">Toplam <?php echo $totalcount ?> ürün</small></span></div>
                                     </div>
                                     <div class="row text-center">
                                         <div class="w-auto mx-auto">
-                                            <h5 class="bold text-center"><?php echo $total ?> ₺</h5>
+                                            <h5 class="bold text-center" id="cartValue"><?php echo $total ?> ₺</h5>
                                         </div>
                                     </div>
                                     <div class="row">
