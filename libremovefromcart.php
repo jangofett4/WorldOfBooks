@@ -3,9 +3,7 @@
 require_once "libcart.php";
 
 if (!isset($_GET["book"]))
-{
     die("ERR_EMPTY_INPUT");
-}
 
 $bookid = $_GET["book"];
 

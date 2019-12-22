@@ -155,7 +155,7 @@ use Google\Cloud\Datastore\Entity;
                         </div>
                     <?php } ?>
                     <?php if (LibSSN::get("conerr")) { ?>
-                        <div class="alert col-sm-6 mx-auto alert-success alert-dismissible fade show mt-3 mb-0" role="alert">
+                        <div class="alert col-sm-6 mx-auto alert-danger alert-dismissible fade show mt-3 mb-0" role="alert">
                             <strong>Hata!</strong> Sunucu ile bağlantı kurulamadı, tekrar deneyin.
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span class="fa fa-times"></span>
@@ -163,7 +163,7 @@ use Google\Cloud\Datastore\Entity;
                         </div>
                     <?php } ?>
                     <?php if (LibSSN::get("imagerr")) { ?>
-                        <div class="alert col-sm-6 mx-auto alert-success alert-dismissible fade show mt-3 mb-0" role="alert">
+                        <div class="alert col-sm-6 mx-auto alert-danger alert-dismissible fade show mt-3 mb-0" role="alert">
                             <strong>Hata!</strong> Seçilen kapak fotoğrafı geçersiz.
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span class="fa fa-times"></span>
@@ -171,7 +171,7 @@ use Google\Cloud\Datastore\Entity;
                         </div>
                     <?php } ?>
                     <?php if (LibSSN::get("imagetoobig")) { ?>
-                        <div class="alert col-sm-6 mx-auto alert-success alert-dismissible fade show mt-3 mb-0" role="alert">
+                        <div class="alert col-sm-6 mx-auto alert-danger alert-dismissible fade show mt-3 mb-0" role="alert">
                             <strong>Hata!</strong> Seçilen kapak fotoğrafı çok büyük, izin verilen max 3mb.
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span class="fa fa-times"></span>
@@ -179,7 +179,7 @@ use Google\Cloud\Datastore\Entity;
                         </div>
                     <?php } ?>
                     <?php if (LibSSN::get("imagetyperr")) { ?>
-                        <div class="alert col-sm-6 mx-auto alert-success alert-dismissible fade show mt-3 mb-0" role="alert">
+                        <div class="alert col-sm-6 mx-auto alert-danger alert-dismissible fade show mt-3 mb-0" role="alert">
                             <strong>Hata!</strong> Seçilen kapak fotoğrafı formatı hatalı, izin verilen dosya türleri: PNG, JPG, JPEG.
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span class="fa fa-times"></span>
@@ -187,7 +187,7 @@ use Google\Cloud\Datastore\Entity;
                         </div>
                     <?php } ?>
                     <?php if (LibSSN::get("uplaoderr")) { ?>
-                        <div class="alert col-sm-6 mx-auto alert-success alert-dismissible fade show mt-3 mb-0" role="alert">
+                        <div class="alert col-sm-6 mx-auto alert-danger alert-dismissible fade show mt-3 mb-0" role="alert">
                             <strong>Hata!</strong> Dosya yükleme hatası, tekrar deneyin.
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span class="fa fa-times"></span>

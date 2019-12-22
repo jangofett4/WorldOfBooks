@@ -4,17 +4,16 @@ require_once "libssn.php";
 
 define("panelphp", "panel.php");
 
-if (!isset(
-    $_POST["bookname"], 
-    $_POST["author"], 
-    $_POST["booktype"], 
-    $_POST["publisher"], 
-    $_POST["stock"], 
-    $_POST["cost"], 
-    $_POST["publishdate"], 
-    $_POST["papercount"], 
-    $_POST["language"], 
-    $_POST["description"])) {
+if (!isset($_POST["bookname"],
+$_POST["author"],
+$_POST["booktype"],
+$_POST["publisher"],
+$_POST["stock"],
+$_POST["cost"],
+$_POST["publishdate"],
+$_POST["papercount"],
+$_POST["language"],
+$_POST["description"])) {
     header("Location: panel.php?emptyinput=1");
     exit();
 }
@@ -39,11 +38,6 @@ if (!isset($_SESSION["panellogged"])) {
 require_once "libcon.php";
 
 $uploaddir = "covers/";
-$targetfile = $uploaddir . basename($_FILES["bookcover"]["name"]);
-
-$uploadOk = 1;
-$imageFileType = strtolower(pathinfo($targetfile, PATHINFO_EXTENSION));
-// Check if image file is a actual image or fake image
 
 $check = getimagesize($_FILES["bookcover"]["tmp_name"]);
 if ($check !== false) {
@@ -51,17 +45,11 @@ if ($check !== false) {
         LibSSN::set("imagetoobig");
         header("Location: " . panelphp);
         exit();
-    } 
+    }
 
-    if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg") {
+    $ext = strtolower(pathinfo(basename($_FILES["bookcover"]["name"]), PATHINFO_EXTENSION));
+    if ($ext != "jpg" && $ext != "png" && $ext != "jpeg") {
         LibSSN::set("imagetyperr");
-        header("Location: panel.php");
-        exit();
-    } 
-
-    if (!move_uploaded_file($_FILES["bookcover"]["tmp_name"], $targetfile))
-    {
-        LibSSN::set("uploaderr");
         header("Location: panel.php");
         exit();
     }
@@ -81,11 +69,16 @@ if ($check !== false) {
         else
             for ($i = 3; $i <= strlen($word); $i++)
                 array_push($tags, mb_substr($word, 0, $i));
-                
+
     try {
         $con = DSConnection::open_or_get();
-        $book = $con->entity("Books");
-        $book->set([
+        
+        $key = $con->key("Books");
+        $id = $key->pathEndIdentifier();
+        
+        $targetfile = $uploaddir . $id . '.' . $ext;
+        
+        $book = $con->entity($key, [
             "added" => date(DATE_RFC3339),
             "tags" => $tags,
             "name" => $bookname,
@@ -99,7 +92,13 @@ if ($check !== false) {
             "language" => $lang,
             "description" => $desc,
             "coverpath" => $targetfile
-        ]);
+        ], ["excludeFromIndexes" => ["stock", "published", "papercount", "description", "coverpath"]]);
+
+        if (!move_uploaded_file($_FILES["bookcover"]["tmp_name"], $targetfile)) {
+            LibSSN::set("uploaderr");
+            header("Location: panel.php");
+            exit();
+        }
         $con->insert($book);
         LibSSN::set("bookadd");
         header("Location: " . panelphp);
@@ -113,5 +112,3 @@ if ($check !== false) {
     LibSSN::set("imagerr");
     header("Location: " . panelphp);
 }
-
-?>
