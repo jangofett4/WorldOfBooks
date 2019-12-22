@@ -51,7 +51,7 @@ require_once "libssn.php";
                     ?>
                             <div class="row no-gutters border mb-sm-2" id="bigcart<?php echo $id ?>">
                                 <div class="col-2 align-self-center">
-                                    <img src="<?php echo $book["coverpath"] ?>" class="card-img card-img-search" alt="...">
+                                    <a href="pageBookInfo.php?book=<?php echo $id ?>"><img src="<?php echo $book["coverpath"] ?>" class="card-img card-img-search" alt="..."></a>
                                 </div>
                                 <div class="col-4 align-self-center">
                                     <?php echo $book["name"] ?>

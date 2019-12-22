@@ -13,7 +13,7 @@ if (!$logged && $ssncart != null) {
         $book = $con->lookup($key);
         $total += $book["cost"] * $count;
 ?>
-        <a class="dropdown-item px-sm-2" href="#" id="cart<?php echo $id ?>">
+        <a class="dropdown-item px-sm-2" href="pageBookInfo.php?book=<?php echo $id ?>" id="cart<?php echo $id ?>">
             <div class="w-100">
                 <div class="row no-gutters border">
                     <div class="col-sm-2 align-self-center ml-sm-2">
