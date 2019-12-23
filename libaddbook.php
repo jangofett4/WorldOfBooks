@@ -1,5 +1,7 @@
 <?php
 
+use Google\Cloud\Datastore\Entity;
+
 require_once "libssn.php";
 
 define("panelphp", "panel.php");
@@ -54,7 +56,7 @@ if ($check !== false) {
         exit();
     }
 
-    $split = explode(' ', $bookname);
+    $split = explode(' ', strtolower($bookname));
     $tags = array();
     foreach ($split as $word)
         if (strlen($word) < 3)
@@ -62,7 +64,7 @@ if ($check !== false) {
         else
             for ($i = 3; $i <= strlen($word); $i++)
                 array_push($tags, mb_substr($word, 0, $i));
-    $split = explode(' ', $author);
+    $split = explode(' ', strtolower($author));
     foreach ($split as $word)
         if (strlen($word) < 3)
             array_push($tags, $word);
@@ -72,13 +74,11 @@ if ($check !== false) {
 
     try {
         $con = DSConnection::open_or_get();
-        
+
         $key = $con->key("Books");
-        $id = $key->pathEndIdentifier();
-        
-        $targetfile = $uploaddir . $id . '.' . $ext;
-        
-        $book = $con->entity($key, [
+
+        $book = $con->entity($key, [], ["excludeFromIndexes" => ["stock", "published", "papercount", "description", "coverpath"]]);
+        $book->set([
             "added" => date(DATE_RFC3339),
             "tags" => $tags,
             "name" => $bookname,
@@ -91,16 +91,22 @@ if ($check !== false) {
             "papercount" => $paper,
             "language" => $lang,
             "description" => $desc,
-            "coverpath" => $targetfile
-        ], ["excludeFromIndexes" => ["stock", "published", "papercount", "description", "coverpath"]]);
+            "coverpath" => ""
+        ]);
 
+        $con->insert($book);
+        $book = $con->lookup($book->key());
+        $targetfile = $uploaddir . $book->key()->pathEndIdentifier() . '.' . $ext;
         if (!move_uploaded_file($_FILES["bookcover"]["tmp_name"], $targetfile)) {
             LibSSN::set("uploaderr");
             header("Location: panel.php");
             exit();
         }
-        $con->insert($book);
+        $book["coverpath"] = $targetfile;
+        /** @var Entity $book */
+        $con->update($book);
         LibSSN::set("bookadd");
+
         header("Location: " . panelphp);
         exit();
     } catch (Exception $e) {

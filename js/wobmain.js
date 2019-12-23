@@ -113,8 +113,9 @@ function alertClear(elem)
 
 function ajaxdelete(book)
 {
-    let modal = $("#deleteModal");
-    modal.modal();
+    let spin = $("#modspin" + book);
+    $("#delbtn" + book).toggleClass("d-none");
+    spin.toggleClass("d-none");
     $.post("libdeletebook.php", { "book": book }, (result) => {
         switch (result)
         {
@@ -132,7 +133,6 @@ function ajaxdelete(book)
                 break;
         }
     });
-    modal.modal("hide");
 }
 
 function ajaxeditdone()

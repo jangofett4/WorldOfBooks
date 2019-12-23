@@ -383,26 +383,14 @@ use Google\Cloud\Datastore\Entity;
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-auto align-self-center pointer">
-                                    <a onclick="ajaxdelete(<?php echo $key ?>)"><span class="fa fa-trash text-danger point12"></span></a>
+                                <div class="col-auto align-self-center pointer" onclick="ajaxdelete(<?php echo $key ?>)" id="delbtn<?php echo $key ?>">
+                                    <span class="fa fa-trash text-danger point12"></span>
+                                </div>
+                                <div class="spinner-border text-danger align-self-center d-none" id="modspin<?php echo $key ?>">
                                 </div>
                             </div>
                         <?php } ?>
                     <?php } ?>
-                    <div class="modal fade" data-backdrop="static" id="deleteModal" tabindex="-1" role="dialog" aria-hidden="true">
-                        <div class="modal-sm modal-dialog modal-dialog-centered" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title mx-auto" id="exampleModalLabel">Kitap Siliniyor</h5>
-                                </div>
-                                <div class="modal-body mx-auto">
-                                    <div class="spinner-border" role="status">
-                                        <span class="sr-only">Loading...</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <div class="modal fade" data-backdrop="static" id="editModal" tabindex="-1" role="dialog" aria-hidden="true">
                         <div class="modal-lg modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
