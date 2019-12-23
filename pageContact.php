@@ -77,7 +77,7 @@
             </div>
         </div>
     </div>
-    <div style="margin-top:20%;" ><?php include "templates/footer.php" ?></div>
+    <div style="margin-top:15%;" ><?php include "templates/footer.php" ?></div>
 
 
     <!-- Libraries -->
