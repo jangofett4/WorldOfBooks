@@ -9,12 +9,12 @@
                     Kocaeli/Türkiye
                 </div>
                 <div class="col py-1 mb-sm-3">
-                    info@gmail.com
+                    yahyagedikyg@gmail.com & sulhdogan@gmail.com
                 </div>
             </div>
             <div class="row text-center mt-sm-2">
                 <div class="col py-1 mb-sm-3">
-                    © Copyright 2019 World of Books Tüm hakları saklıdır.
+                    Eğitim Amaçlı Hazırlanmıştır. Yahya Gedik & Barış Doğan
                 </div>
             </div>
         </div>

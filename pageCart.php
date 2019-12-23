@@ -42,6 +42,32 @@ require_once "libssn.php";
                                     <div class="col align-self-center text-center"><b>BİRİM FİYAT</b></div>
                                     <div class="col align-self-center text-center"><b>TOPLAM FİYAT</b></div>
                                     <div class="col align-self-center text-center"><b>KALDIR</b></div>
+                            <div class="row no-gutters border mb-sm-2" id="bigcart<?php echo $id ?>">
+                                <div class="col-2 align-self-center">
+                                    <a href="pageBookInfo.php?book=<?php echo $id ?>"><img src="<?php echo $book["coverpath"] ?>" class="card-img card-img-search" alt="..."></a>
+                                </div>
+                                <div class="col-4 align-self-center">
+                                    <?php echo $book["name"] ?>
+                                </div>
+                                <div class="col-6 align-self-center">
+                                    <div class="card-body">
+                                        <div class="row ">
+                                            <div class="col align-self-center text-center">
+                                                <?php echo $count ?>
+                                            </div>
+                                            <div class="col align-self-center text-center">
+                                                <h5 class="bold"><?php echo $book["cost"] ?> ₺</h5>
+                                            </div>
+                                            <div class="col align-self-center text-center">
+                                                <h5 class="bold"><?php echo $book["cost"] * $count ?> ₺</h5>
+                                            </div>
+                                            <div class="col align-self-center text-center">
+                                                <span>
+                                                    <a class="no-links-visible text-danger pointer" onclick="ajaxremovefromcart(<?php echo $id ?>)"><span class="fa fa-trash fa-2x"></span></a>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

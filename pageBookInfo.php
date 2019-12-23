@@ -11,9 +11,9 @@ require_once "libssn.php";
 
     <title>World Of Books</title>
     <style>
-        .checked {
+        /*.checked {
             color: orange;
-        }
+        }*/
     </style>
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/all.css">
@@ -35,7 +35,7 @@ require_once "libssn.php";
                 <div class="col">
                     <h1 class="display-5"><?php echo $book["name"] ?></h1>
                 </div>
-                <div class="text-center col align-self-center">
+                <div class="text-center col align-self-center" id="stars">
                     <span class="fa fa-star checked"></span>
                     <span class="fa fa-star checked"></span>
                     <span class="fa fa-star checked"></span>
@@ -59,12 +59,12 @@ require_once "libssn.php";
                             <span class="font-weight-bold text-primary"><?php echo $book["cost"] ?> ₺</span>
                         </div>
                         <div class="col align-self-center">
-                            <button class="btn btn-circle btn-dark btn-sm"><span class="fa fa-minus"></span></button>
-                            0
-                            <button class="btn btn-circle btn-dark btn-sm"><span class="fa fa-plus"></span></button>
+                            <button class="btn btn-circle btn-dark btn-sm" id="minus" ><span class="fa fa-minus"></span></button>
+                            <span id="count">1</span>
+                            <button class="btn btn-circle btn-dark btn-sm" id="plus"><span class="fa fa-plus"></span></button>
                         </div>
                         <div class="col align-self-center">
-                            <button type="button" class="btn btn-danger" onclick="ajaxaddtocart(<?php echo $_GET['book']; ?>, 1)">Sepete Ekle</button>
+                            <button type="button" class="btn btn-danger" onclick="ajaxaddtocart(<?php echo $_GET['book']; ?>, count)">Sepete Ekle</button>
                         </div>
                     </div>
                 </div>
@@ -85,6 +85,18 @@ require_once "libssn.php";
     <script src="js/jquery-3.4.1.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.js"></script>
+    <script>
+        var count = 1;
+        $(document).ready(function(){
+            $("#plus").on("click", function(){
+                $("#count").html(++count);
+            });
+            $("#minus").on("click", function(){
+                if(count > 1)
+                    $("#count").html(--count);
+            });
+        });
+    </script>
 </body>
 
 </html>

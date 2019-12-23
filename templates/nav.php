@@ -59,7 +59,7 @@ require_once "libssn.php";
                             <div id="navCart">    
                                 <?php require_once "cart.php" ?>
                             </div>
-                            <div href="#" class="p-sm-4 text-center">
+                            <div class="p-sm-4 text-center">
                                 <div class="col text-center">
                                     <div class="row">
                                         <div class="w-auto mx-auto"><span class="card-text"><small id="cartItems">Toplam <?php echo $totalcount ?> ürün</small></span></div>
