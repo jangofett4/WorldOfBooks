@@ -78,6 +78,10 @@ a.no-links-visible:active {
     width: 10rem;
 }
 
+.img-bigcart {
+    width: 10vh;
+}
+
 .footer {
     background-color: #343a40;
     color: white;
