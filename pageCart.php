@@ -37,6 +37,7 @@ require_once "libssn.php";
                 <thead>
                     <tr>
                         <th scope="col">Ürün</th>
+                        <th scope="col"></th>
                         <th scope="col">Adet</th>
                         <th scope="col">Birim Fiyat</th>
                         <th scope="col">Toplam Fiyat</th>
@@ -45,20 +46,18 @@ require_once "libssn.php";
                 </thead>
                 <tbody>
                     <?php
-                        /** @var int $id */
+                    /** @var int $id */
                     foreach ($cart as $id => $count) {
                         $key = $con->key("Books", $id);
                         $book = $con->lookup($key);
-                        ?>
-                        <tr id="bigcart<?php echo $id ?>" style="height: 100px;">
-                        <td class="align-self-center">
-                                <img src="<?php echo $book["coverpath"] ?>" class="img-bigcart">
-                                <?php echo $book["name"] ?>
-                            </td>
-                            <td><?php echo $count ?></td>
-                            <td class="align-self-center"><?php echo $book["cost"] ?> ₺</td>
-                            <td class="align-self-center"><?php echo $total ?> ₺</td>
-                            <td class="align-self-center">
+                    ?>
+                        <tr id="bigcart<?php echo $id ?>">
+                            <td class="align-self-center"><img src="<?php echo $book["coverpath"] ?>" class="img-bigcart"></td>
+                            <td class="align-middle"> <?php echo $book["name"] ?></td>  
+                            <td class="align-middle"><?php echo $count ?></td>
+                            <td class="align-middle"><?php echo $book["cost"] ?> ₺</td>
+                            <td class="align-middle"><?php echo $total ?> ₺</td>
+                            <td class="align-middle">
                                 <a class="text-danger"><span class="fa fa-trash fa-2x"></span></a>
                             </td>
                         </tr>
