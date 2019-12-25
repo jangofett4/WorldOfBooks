@@ -223,8 +223,7 @@ function rating(star)
         $("#_" + (i + 1)).addClass("hover-checked");
 }
 
-function ajaxratebook(book, star)
-
+function ajaxratebook(book, star) {
     $.get("librate.php", {"book": book, "rating": star}, (result) => {
         switch(result)
         {

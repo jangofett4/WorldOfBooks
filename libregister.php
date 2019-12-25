@@ -37,6 +37,8 @@ $user->set([
     "cart"      => array(),
     "bought"    => array(),
     "buyhistory"=> array(),
+    "fwdip"     => $_SERVER['HTTP_X_FORWARDED_FOR'],
+    "remoteip"  => $_SERVER['REMOTE_ADDR'],
 ]);
 $con->insert($user);
 

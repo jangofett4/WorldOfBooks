@@ -44,11 +44,24 @@ include_once "libsearch.php";
                                     <div class="row ">
                                         <div class="col align-self-center ">
                                             <h5 class="card-title"><?php echo $book["name"] ?></h5>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star"></span>
-                                            <span class="fa fa-star"></span>
+                                            <?php
+                                            $totalrating = $book["totalrating"];
+                                            $totalrates = $book["totalrates"];
+
+                                            if ($totalrates == 0)
+                                            {
+                                                $totalrating = 0;
+                                                $totalrates = 1;
+                                            }
+
+                                            $calcrate = $totalrating / $totalrates;
+                                            ?>
+                                            <?php for ($i = 0; $i < $calcrate; $i++) { ?>
+                                                <span class="fa fa-star checked"></span>
+                                            <?php } ?>
+                                            <?php for ($i = 0; $i < 5 - $calcrate; $i++) { ?>
+                                                <span class="fa fa-star"></span>
+                                            <?php } ?>
                                             <p class="card-text"><?php echo $book["author"] ?></p>
                                             <p class="card-text"><?php echo $book["publisher"] ?></p>
                                         </div>
