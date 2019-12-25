@@ -42,7 +42,7 @@ require_once "libssn.php";
                             <?php echo ($_SESSION["user_name"] . " " . $_SESSION["user_surname"]) ?>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Siparişlerim</a>
                             <a class="dropdown-item" href="#">Another action</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#" onclick="ajaxlogout()">Çıkış Yap</a>
