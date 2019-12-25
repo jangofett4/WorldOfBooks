@@ -79,19 +79,23 @@ if ($check !== false) {
 
         $book = $con->entity($key, [], ["excludeFromIndexes" => ["stock", "published", "papercount", "description", "coverpath"]]);
         $book->set([
-            "added" => date(DATE_RFC3339),
-            "tags" => $tags,
-            "name" => $bookname,
-            "author" => $author,
-            "type" => $type,
-            "stock" => $stock,
-            "cost" => $cost,
-            "published" => $publishdate,
-            "publisher" => $publisher,
-            "papercount" => $paper,
-            "language" => $lang,
-            "description" => $desc,
-            "coverpath" => ""
+            "added"         => date(DATE_RFC3339),
+            "tags"          => $tags,
+            "name"          => $bookname,
+            "author"        => $author,
+            "type"          => $type,
+            "stock"         => $stock,
+            "cost"          => $cost,
+            "published"     => $publishdate,
+            "publisher"     => $publisher,
+            "papercount"    => $paper,
+            "language"      => $lang,
+            "description"   => $desc,
+            "coverpath"     => "",
+            "bought"        => array(),
+            "ratings"       => array(),
+            "totalrating"   => 0,
+            "totalrates"    => 0
         ]);
 
         $con->insert($book);

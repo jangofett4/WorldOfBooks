@@ -202,16 +202,51 @@ function ajaxaddtocart(book, count)
             case "":
                 break;
             case "ERR_EMPTY_INPUT":
-                console.log("User left the input empty");
+                console.log("User left the input mpty");
                 break;
         }
     }).done(() => {
         let cart = $("#navCart");
-        $.get("libcartlist.php", {}, (result) => {
+        $.get("libcartlist.php", {}, (result => {
             cart.html(result);
             $("#cartItems").text("Toplam " + $("#cartTotalItems").text() + " ürün");
             $("#cartValue").text($("#cartTotalValue").text() + " ₺");
-        });
+        }));
+    });
+}
+
+function rating(star)
+{
+    for (let i = star; i < 5; i++)
+        $("#_" + (i + 1)).removeClass("hover-checked");
+    for (let i = 0; i < star; i++)
+        $("#_" + (i + 1)).addClass("hover-checked");
+}
+
+function ajaxratebook(book, star)
+
+    $.get("librate.php", {"book": book, "rating": star}, (result) => {
+        switch(result)
+        {
+            case "ERR_NOT_LOGGED_IN":
+                window.location.append("pageLogin.php");
+                break;
+            case "ERR_EMPTY_INPUT":
+                console.log("User left the input empty");
+                break;
+            case "ERR_RATING":
+                console.log("User manipulated rating data");
+                break;
+            case "ERR_NOT_BOUGHT":
+                console.log("User did not buy this book before");
+                break;
+            case "ERR_CONNECTION":
+                console.log("Unable to connect to cloud");
+                break;
+            case "":
+                /* TODO: handle rating */
+                break;
+        }
     });
 }
 
@@ -223,9 +258,17 @@ function ajaxremovefromcart(book)
             case "":
                 $("#cart" + book).toggleClass("d-none");
                 $("#bigcart" + book).toggleClass("d-none");
+                cartTotal = cartTotal - parseInt($("#bt" + book).text());
+                cartItemsTotal = cartItemsTotal - parseInt($("#bc" + book).text());
+                $("#cartTotal").text(cartTotal);
+                $("#cartValue").text(cartTotal + " ₺");
+                $("#cartItems").text("Toplam " + cartItemsTotal + " ürün");
                 break;
             case "ERR_EMPTY_INPUT":
                 console.log("User left the input empty");
+                break;
+            case "ERR_CONNECTION":
+                console.log("Unable to connect to cloud");
                 break;
         }
     });

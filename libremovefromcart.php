@@ -7,5 +7,9 @@ if (!isset($_GET["book"]))
 
 $bookid = $_GET["book"];
 
-LibCart::init();
-LibCart::remove($bookid);
+try {
+    LibCart::init();
+    LibCart::remove($bookid);
+} catch (\Throwable $th) {
+    die("ERR_CONNECTION");
+}
