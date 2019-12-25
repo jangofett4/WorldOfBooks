@@ -16,7 +16,7 @@ require_once "libssn.php";
             </div>
             <div class="col-auto collapse navbar-collapse row" id="navbarNavAltMarkup">
                 <div class="col">
-                    <form action="pageSearchResults.php" method="GET">
+                    <form action="pageSearchResults.php" method="GET" id="searchForm">
                         <div class="input-group">
                             <!-- onkeyup="ajaxsearchbook(this.value)" -->
                             <input type="text" class="form-control mr-sm-2" id="navsearch" placeholder="Kitap ya da Yazar (örn. Harry Potter)" name="query" value="<?php if (isset($_GET["query"])) echo $_GET["query"]; ?>">

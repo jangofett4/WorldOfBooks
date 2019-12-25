@@ -1,0 +1,28 @@
+<html>
+
+<body>
+    <div class='card-wrapper'></div>
+    <!-- CSS is included via this JavaScript file -->
+    <script src="js/card.js"></script>
+    <form>
+        <input type="text" name="number">
+        <input type="text" name="name" />
+        <input type="text" name="expiry" />
+        <input type="text" name="cvc" />
+    </form>
+    <script>
+        var card = new Card({
+            form: 'form',
+            container: '.card-wrapper',
+
+            placeholders: {
+                number: '**** **** **** ****',
+                name: 'Arya Stark',
+                expiry: '**/****',
+                cvc: '***'
+            }
+        });
+    </script>
+</body>
+
+</html>
