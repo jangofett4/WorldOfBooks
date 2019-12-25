@@ -5,10 +5,15 @@ use Google\Cloud\Datastore\Entity;
 require_once "libssn.php";
 require_once "libcon.php";
 
-if (!isset($_SESSION["panellogged"]))
+function setifnotset(&$val, $idx, $to)
 {
-    LibSSN::set("restrict");
-    header("Location: panel.php");
+    if (!isset($val[$idx]))
+        $val[$idx] = $to;
+}
+
+if (!isset($_SESSION["panellogged"]))
+{    
+    header("Location: index.php");
     exit();
 }
 
@@ -20,10 +25,9 @@ $result = $con->runQuery($query);
 /** @var Entity $book */
 foreach ($result as $book)
 {
-    if (!isset($book["added"]))
-    {
-        $book["added"] = new DateTime();
-    }
+    setifnotset($book, "added", new DateTime());
+    setifnotset($book, "tags", null);
+    
     if ($book["tags"] == null)
     {
         $name = strtolower($book["name"]);
@@ -46,5 +50,23 @@ foreach ($result as $book)
                     array_push($tags, mb_substr($word, 0, $i));
         $book["tags"] = $tags;
     }
+
+    setifnotset($book, "ratings", array());
+    setifnotset($book, "totalrating", 0);
+    setifnotset($book, "totalrates", 0);
+
     $con->update($book);
+}
+
+$query = $con->query()
+    ->kind("UserInfo");
+$result = $con->runQuery($query);
+
+foreach ($result as $user)
+{
+    setifnotset($user, "cart", array());
+    setifnotset($user, "bought", array());
+    setifnotset($user, "buyhistory", array());
+    
+    $con->update($user);
 }

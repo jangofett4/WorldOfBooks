@@ -213,7 +213,6 @@ function rating(star) {
 }
 
 function ajaxratebook(book, star) {
-
     $.get("librate.php", { "book": book, "rating": star }, (result) => {
         switch (result) {
             case "ERR_NOT_LOGGED_IN":

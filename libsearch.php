@@ -30,19 +30,21 @@ try {
             {
                 $results[$key] = true;
                 array_push($books, [
-                    "added" => $book["date"],
-                    "name" => $book["name"],
-                    "author" => $book["author"],
-                    "type" => $book["type"],
-                    "stock" => $book["stock"],
-                    "cost" => $book["cost"],
-                    "published" => $book["published"],
-                    "publisher" => $book["publisher"],
-                    "papercount" => $book["papercount"],
-                    "language" => $book["language"],
-                    "description" => $book["description"],
-                    "coverpath" => $book["coverpath"],
-                    "key" => $key
+                    "added"         => $book["date"],
+                    "name"          => $book["name"],
+                    "author"        => $book["author"],
+                    "type"          => $book["type"],
+                    "stock"         => $book["stock"],
+                    "cost"          => $book["cost"],
+                    "published"     => $book["published"],
+                    "publisher"     => $book["publisher"],
+                    "papercount"    => $book["papercount"],
+                    "language"      => $book["language"],
+                    "description"   => $book["description"],
+                    "coverpath"     => $book["coverpath"],
+                    "totalrating"   => $book["totalrating"],
+                    "totalrates"    => $book["totalrates"],
+                    "key"           => $key,
                 ]);
             }
         }

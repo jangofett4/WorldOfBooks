@@ -1,3 +1,15 @@
+<?php
+require_once "libssn.php";
+require_once "libcon.php";
+
+if (!LibSSN::getnd("logged")) {
+    header("Location: pageLogin.php");
+    exit();
+}
+
+$hist = LibSSN::getvnd("user_history");
+
+?>
 <!doctype html>
 <html lang="tr">
 
@@ -16,9 +28,12 @@
 <body>
     <?php include "templates/nav.php" ?>
     <div class="container">
-        <?php if (count($cart) == 0) { ?>
+        <?php
+        $con = DSConnection::open_or_get();
+        ?> 
+        <?php if (count($hist) == 0) { ?>
             <div class="text-center">
-                <h1 class="display-3">Satın aldığınız ürün yok</h1>
+                <h1 class="display-3">Daha önce alışveriş yapmamışsınız</h1>
                 <h1 class="display-4">Alışverişe başlamak için <a href="index.php">tıklayın</a>!</h1>
             </div>
         <?php } else { ?>
@@ -36,11 +51,11 @@
                     <tbody>
                         <?php
                         /** @var int $id */
-                        $totalcount = 0;
-                        foreach ($cart as $id => $count) {
-                            $key = $con->key("Books", $id);
+                        foreach ($hist as $elem) {
+                            $bookid = $elem[0];
+                            $count = $elem[1];
+                            $key = $con->key("Books", $bookid);
                             $book = $con->lookup($key);
-                            $totalcount += $count;
                         ?>
                             <tr id="bigcart<?php echo $id ?>">
                                 <td class="align-middle"><img src="<?php echo $book["coverpath"] ?>" class="img-bigcart"></td>
@@ -52,9 +67,6 @@
                         <?php } ?>
                     </tbody>
                 </table>
-            </div>
-            <div class="row">
-                <h5 class="col align-self-center">Toplam: <b id="cartTotal"><?php echo $total ?></b><b>₺</b></h5>
             </div>
         <?php } ?>
     </div>

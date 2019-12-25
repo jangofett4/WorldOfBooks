@@ -77,22 +77,34 @@ require_once "libcon.php";
         ?>
         <div class="row text-center justify-content-center">
             <?php /** @var Entity $book */ foreach ($result as $book) { ?>
-            <a class="no-links-visible" href="pageBookInfo.php?book=<?php echo $book->key()->pathEndIdentifier() ?>">
-                <div class="col-sm card m-1" style="width: 17rem;">
-                    <div class="p-3"><img class="card-img-top border border-dark" src="<?php echo $book["coverpath"] ?>" alt="<?php echo $book["name"] ?>" style="height: 18rem"/></div>
-                    <div class="card-body-index">
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
-                        <p class="card-text"><?php echo $book["name"] ?></p>
-                        <p class="card-text"><?php echo $book["author"] ?> </p>
-                        <p class="card-text"><?php echo $book["publisher"] ?></p>
-                        <p class="card-text"><?php echo $book["cost"] ?> ₺</p>
+                <a class="no-links-visible" href="pageBookInfo.php?book=<?php echo $book->key()->pathEndIdentifier() ?>">
+                    <div class="col-sm card m-1" style="width: 17rem;">
+                        <div class="p-3"><img class="card-img-top border border-dark" src="<?php echo $book["coverpath"] ?>" alt="<?php echo $book["name"] ?>" style="height: 18rem" /></div>
+                        <div class="card-body-index">
+                            <?php
+                            $totalrating = $book["totalrating"];
+                            $totalrates = $book["totalrates"];
+
+                            if ($totalrates == 0) {
+                                $totalrating = 0;
+                                $totalrates = 1;
+                            }
+
+                            $calcrate = $totalrating / $totalrates;
+                            ?>
+                            <?php for ($i = 0; $i < floor($calcrate); $i++) { ?>
+                                <span class="fa fa-star checked"></span>
+                            <?php } ?>
+                            <?php for ($i = 0; $i < 5 - floor($calcrate); $i++) { ?>
+                                <span class="fa fa-star"></span>
+                            <?php } ?>
+                            <p class="card-text"><?php echo $book["name"] ?></p>
+                            <p class="card-text"><?php echo $book["author"] ?> </p>
+                            <p class="card-text"><?php echo $book["publisher"] ?></p>
+                            <p class="card-text"><?php echo $book["cost"] ?> ₺</p>
+                        </div>
                     </div>
-                </div>
-            </a>
+                </a>
             <?php } ?>
         </div>
     </div>
