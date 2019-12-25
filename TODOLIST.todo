@@ -6,5 +6,5 @@ TODO: add error alerts to ajax functions * PARTIALDONE
 CHECKDONE-TODO: fix panel error alert colors
 DONE-FIXME: add move session cart to user cart
 FIXME: do some error checking when connection to cloud, maybe retry? (index.php, pageBookInfo.php)
-TODO: Cart remove does not update total value
+DONE-TODO: Cart remove does not update total value
 TODO: Might want confirmation from user before deleting books

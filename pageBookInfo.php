@@ -11,9 +11,12 @@ require_once "libssn.php";
 
     <title>World Of Books</title>
     <style>
-        /*.checked {
-            color: orange;
-        }*/
+        .checked {
+            color: #f39c12;
+        }
+        .hover-checked {
+            color:  #f8c471;
+        }
     </style>
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/all.css">
@@ -35,12 +38,12 @@ require_once "libssn.php";
                 <div class="col">
                     <h1 class="display-5"><?php echo $book["name"] ?></h1>
                 </div>
-                <div class="text-center col align-self-center" id="stars">
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
+                <div class="text-center col-sm-3 align-self-center row" id="stars">
+                    <div onmouseout="rating(0)" onmouseover="rating(1)" onclick="ajaxratebook(<?php echo $_GET['book'] ?>, 1)"><span id="_1" class="fa fa-star pointer col px-sm-1"></span></div>
+                    <div onmouseout="rating(0)" onmouseover="rating(2)" onclick="ajaxratebook(<?php echo $_GET['book'] ?>, 2)"><span id="_2" class="fa fa-star pointer col px-sm-1"></span></div>
+                    <div onmouseout="rating(0)" onmouseover="rating(3)" onclick="ajaxratebook(<?php echo $_GET['book'] ?>, 3)"><span id="_3" class="fa fa-star pointer col px-sm-1"></span></div>
+                    <div onmouseout="rating(0)" onmouseover="rating(4)" onclick="ajaxratebook(<?php echo $_GET['book'] ?>, 4)"><span id="_4" class="fa fa-star pointer col px-sm-1"></span></div>
+                    <div onmouseout="rating(0)" onmouseover="rating(5)" onclick="ajaxratebook(<?php echo $_GET['book'] ?>, 5)"><span id="_5" class="fa fa-star pointer col px-sm-1"></span></div>
                 </div>
             </div>
             <div class="row">

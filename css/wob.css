@@ -79,6 +79,10 @@ a.no-links-visible:active {
     width: 10rem;
 }
 
+.table.no-cellpadding td {
+    padding: 0;
+}
+
 .img-bigcart {
     width: 10vh;
 }

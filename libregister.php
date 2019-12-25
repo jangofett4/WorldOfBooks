@@ -34,6 +34,9 @@ $user->set([
     "password"  => $password,
     "name"      => $name,
     "surname"   => $surname,
+    "cart"      => array(),
+    "bought"    => array(),
+    "buyhistory"=> array(),
 ]);
 $con->insert($user);
 
