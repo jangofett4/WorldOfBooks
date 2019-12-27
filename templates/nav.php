@@ -57,7 +57,7 @@ require_once "libssn.php";
                         </button>
                         <div class="dropdown-menu text-center p-0" aria-labelledby="dropdownMenuButton" style="width: 23rem">
                             <div id="navCart">
-                                <?php require_once "cart.php" ?>
+                                <?php require_once "templates/cart.php" ?>
                             </div>
                             <div class="spinner-border text-primary mt-sm-2 d-none" role="status" id="cartAddLoading">
                                 <span class="sr-only">Loading...</span>
