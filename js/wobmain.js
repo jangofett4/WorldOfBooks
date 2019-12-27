@@ -220,7 +220,7 @@ function ajaxratebook(book, star) {
     $.get("librate.php", { "book": book, "rating": star }, (result) => {
         switch (result) {
             case "ERR_NOT_LOGGED_IN":
-                window.location.append("pageLogin.php");
+                window.location.append("login.php");
                 break;
             case "ERR_EMPTY_INPUT":
                 console.log("User left the input empty");

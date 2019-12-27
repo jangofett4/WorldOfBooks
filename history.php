@@ -3,7 +3,7 @@ require_once "libssn.php";
 require_once "libcon.php";
 
 if (!LibSSN::getnd("logged")) {
-    header("Location: pageLogin.php");
+    header("Location: login.php");
     exit();
 }
 

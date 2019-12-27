@@ -23,7 +23,7 @@
                         console.log("Unable to connect to cloud");
                         break;
                     default:
-                        window.location.assign("pageBuyComplete.php");
+                        window.location.assign("buydone.php");
                         break;
                 }
             });

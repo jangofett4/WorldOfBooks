@@ -14,8 +14,9 @@ require_once "libssn.php";
         .checked {
             color: #f39c12;
         }
+
         .hover-checked {
-            color:  #f8c471;
+            color: #f8c471;
         }
     </style>
     <link rel="stylesheet" href="css/bootstrap.css">
@@ -23,6 +24,9 @@ require_once "libssn.php";
     <link rel="stylesheet" href="css/wob.css">
 
     <script src="js/wobmain.js?"></script>
+    <script>
+        
+    </script>
 </head>
 
 <body>
@@ -30,6 +34,7 @@ require_once "libssn.php";
     <?php
     if (isset($_GET["book"])) {
         $con = DSConnection::open_or_get();
+        $bookid = $_GET["book"];
         $key = $con->key("Books", $_GET["book"]);
         $book = $con->lookup($key);
     ?>
@@ -39,11 +44,24 @@ require_once "libssn.php";
                     <h1 class="display-5"><?php echo $book["name"] ?></h1>
                 </div>
                 <div class="text-center col-sm-3 align-self-center row" id="stars">
-                    <div onmouseout="rating(0)" onmouseover="rating(1)" onclick="ajaxratebook(<?php echo $_GET['book'] ?>, 1)"><span id="_1" class="fa fa-star pointer col px-sm-1"></span></div>
-                    <div onmouseout="rating(0)" onmouseover="rating(2)" onclick="ajaxratebook(<?php echo $_GET['book'] ?>, 2)"><span id="_2" class="fa fa-star pointer col px-sm-1"></span></div>
-                    <div onmouseout="rating(0)" onmouseover="rating(3)" onclick="ajaxratebook(<?php echo $_GET['book'] ?>, 3)"><span id="_3" class="fa fa-star pointer col px-sm-1"></span></div>
-                    <div onmouseout="rating(0)" onmouseover="rating(4)" onclick="ajaxratebook(<?php echo $_GET['book'] ?>, 4)"><span id="_4" class="fa fa-star pointer col px-sm-1"></span></div>
-                    <div onmouseout="rating(0)" onmouseover="rating(5)" onclick="ajaxratebook(<?php echo $_GET['book'] ?>, 5)"><span id="_5" class="fa fa-star pointer col px-sm-1"></span></div>
+                    <?php
+                    $totalrating = $book["totalrating"];
+                    $totalrates = $book["totalrates"];
+
+                    if ($totalrates == 0) {
+                        $totalrating = 0;
+                        $totalrates = 1;
+                    }
+
+                    $calcrate = floor($totalrating / $totalrates);
+                    ?>
+                    <?php for ($i = 0; $i < 5; $i++) { ?>
+                        <?php if ($i < $calcrate) { ?>
+                            <div onmouseout="rating(<?php echo $calcrate ?>)" onmouseover="rating(<?php echo $i + 1; ?>)"><span id="_<?php echo $i + 1 ?>" class="fa fa-star pointer col px-sm-1 hover-checked"></span></div>
+                        <?php } else { ?>
+                            <div onmouseout="rating(<?php echo $calcrate ?>)" onmouseover="rating(<?php echo $i + 1; ?>)"><span id="_<?php echo $i + 1 ?>" class="fa fa-star pointer col px-sm-1"></span></div>
+                        <?php } ?>
+                    <?php } ?>
                 </div>
             </div>
             <div class="row">
@@ -62,7 +80,7 @@ require_once "libssn.php";
                             <span class="font-weight-bold text-primary"><?php echo $book["cost"] ?> ₺</span>
                         </div>
                         <div class="col align-self-center">
-                            <button class="btn btn-circle btn-dark btn-sm" id="minus" ><span class="fa fa-minus"></span></button>
+                            <button class="btn btn-circle btn-dark btn-sm" id="minus"><span class="fa fa-minus"></span></button>
                             <span id="count">1</span>
                             <button class="btn btn-circle btn-dark btn-sm" id="plus"><span class="fa fa-plus"></span></button>
                         </div>
@@ -90,12 +108,12 @@ require_once "libssn.php";
     <script src="js/bootstrap.js"></script>
     <script>
         var count = 1;
-        $(document).ready(function(){
-            $("#plus").on("click", function(){
+        $(document).ready(function() {
+            $("#plus").on("click", function() {
                 $("#count").html(++count);
             });
-            $("#minus").on("click", function(){
-                if(count > 1)
+            $("#minus").on("click", function() {
+                if (count > 1)
                     $("#count").html(--count);
             });
         });

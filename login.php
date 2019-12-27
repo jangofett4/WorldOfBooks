@@ -45,7 +45,7 @@
                 <div class="col">
                     <h1 class="display-5">Üye Ol</h1><span class="fas fa-user-plus fa-10x p-4" style="color: rgb(220,220,220)"></span>
                 </div>
-                <div class="col"><a href="pageRegister.php"><button type="submit" class="btn btn-secondary px-5">Üye Ol</button></a></div>
+                <div class="col"><a href="register.php"><button type="submit" class="btn btn-secondary px-5">Üye Ol</button></a></div>
             </div>
         </div>
     </div>

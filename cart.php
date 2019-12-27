@@ -71,9 +71,9 @@ require_once "libssn.php";
 
         function buy() {
             <?php if ($logged) { ?>
-                window.location.assign("pageBuy.php");
+                window.location.assign("buy.php");
             <?php } else { ?>
-                window.location.assign("pageLogin.php");
+                window.location.assign("login.php");
             <?php } ?>
         }
     </script>

@@ -1,10 +1,10 @@
 DONE-FIXME: Fix footer links to tabs
-FIXME: Fix footer going on top of content
+DONE-FIXME: Fix footer going on top of content
 TODO: Do some fixes for mobile
 DONE-TODO: add numeric cover images and delete/fix existing ones
 TODO: add error alerts to ajax functions * PARTIALDONE
 CHECKDONE-TODO: fix panel error alert colors
 DONE-FIXME: add move session cart to user cart
-FIXME: do some error checking when connection to cloud, maybe retry? (index.php, pageBookInfo.php)
+FIXME: do some error checking when connection to cloud, maybe retry? (index.php, book.php)
 DONE-TODO: Cart remove does not update total value
 TODO: Might want confirmation from user before deleting books

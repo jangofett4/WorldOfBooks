@@ -70,7 +70,7 @@ include_once "libsearch.php";
                                         </div>
                                         <div class="col align-self-center">
                                             <div class="row m-2"><button type="button" onclick="ajaxaddtocart(<?php echo $book['key'] ?>, 1)" class="btn btn-danger w-100">Sepete Ekle</button></div>
-                                            <div class="row m-2"><a class="w-100" href="pageBookInfo.php?book=<?php echo $book["key"] ?>"><button type="button" class="btn btn-danger w-100">Detaya Git</button></a></div>
+                                            <div class="row m-2"><a class="w-100" href="book.php?book=<?php echo $book["key"] ?>"><button type="button" class="btn btn-danger w-100">Detaya Git</button></a></div>
                                         </div>
                                     </div>
                                 </div>

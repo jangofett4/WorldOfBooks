@@ -26,7 +26,7 @@
         <div class="row">
             <div class="col-4 border  p-4 m-1">
                 <div class="group-row text-center mb-2">
-                    <span class="text-center"> Zaten Üyeyim! <a href="pageLogin.php" style="text-decoration: underline">Giriş Yap</a></span>
+                    <span class="text-center"> Zaten Üyeyim! <a href="login.php" style="text-decoration: underline">Giriş Yap</a></span>
                 </div>
                 <form>
                     <div class="form-group row">

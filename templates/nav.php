@@ -16,7 +16,7 @@ require_once "libssn.php";
             </div>
             <div class="col-auto collapse navbar-collapse row" id="navbarNavAltMarkup">
                 <div class="col">
-                    <form action="pageSearchResults.php" method="GET" id="searchForm">
+                    <form action="search.php" method="GET" id="searchForm">
                         <div class="input-group">
                             <!-- onkeyup="ajaxsearchbook(this.value)" -->
                             <input type="text" class="form-control mr-sm-2" id="navsearch" placeholder="Kitap ya da Yazar (örn. Harry Potter)" name="query" value="<?php if (isset($_GET["query"])) echo $_GET["query"]; ?>">
@@ -32,7 +32,7 @@ require_once "libssn.php";
                     if (!isset($_SESSION["logged"])) {
                     ?>
 
-                        <a class="nav-item nav-link active mr-sm-2" href="pageLogin.php">Giriş Yap <span class="sr-only">(current)</span></a>
+                        <a class="nav-item nav-link active mr-sm-2" href="login.php">Giriş Yap <span class="sr-only">(current)</span></a>
 
                     <?php
                     } else {
@@ -42,7 +42,7 @@ require_once "libssn.php";
                             <?php echo ($_SESSION["user_name"] . " " . $_SESSION["user_surname"]) ?>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="pageBuyHistory.php">Satın Aldıklarım</a>
+                            <a class="dropdown-item" href="history.php">Satın Aldıklarım</a>
                             <!-- <a class="dropdown-item" href="#">Another action</a> -->
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#" onclick="ajaxlogout()">Çıkış Yap</a>
@@ -73,7 +73,7 @@ require_once "libssn.php";
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <a href="pageCart.php" class="no-links-visible w-100"><button type="button" class="btn btn-danger d-block w-100">SEPETE GİT</button></a>
+                                        <a href="cart.php" class="no-links-visible w-100"><button type="button" class="btn btn-danger d-block w-100">SEPETE GİT</button></a>
                                     </div>
                                 </div>
                             </div>

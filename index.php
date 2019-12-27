@@ -77,7 +77,7 @@ require_once "libcon.php";
         ?>
         <div class="row text-center justify-content-center">
             <?php /** @var Entity $book */ foreach ($result as $book) { ?>
-                <a class="no-links-visible" href="pageBookInfo.php?book=<?php echo $book->key()->pathEndIdentifier() ?>">
+                <a class="no-links-visible" href="book.php?book=<?php echo $book->key()->pathEndIdentifier() ?>">
                     <div class="col-sm card m-1" style="width: 17rem;">
                         <div class="p-3"><img class="card-img-top border border-dark" src="<?php echo $book["coverpath"] ?>" alt="<?php echo $book["name"] ?>" style="height: 18rem" /></div>
                         <div class="card-body-index">

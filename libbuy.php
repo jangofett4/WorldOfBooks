@@ -57,10 +57,10 @@ try {
     $con->update($user);
     LibSSN::setv("user_cart", array());
 
-    header("Location: pageBuyComplete.php");
+    header("Location: buydone.php");
     exit();
 } catch (Exception $e) {
     LibSSN::set("ERR_CONNECTION");
-    header("Location: pageCart.php");
+    header("Location: cart.php");
     exit();
 }
