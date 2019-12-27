@@ -33,7 +33,7 @@ require_once "libssn.php";
         $key = $con->key("Books", $_GET["book"]);
         $book = $con->lookup($key);
     ?>
-        <div class="container" style="margin-top: 50px">
+        <div class="container container-fixed" style="margin-top: 50px">
             <div class="row">
                 <div class="col">
                     <h1 class="display-5"><?php echo $book["name"] ?></h1>

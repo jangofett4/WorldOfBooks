@@ -1,3 +1,7 @@
+.container-fixed {
+    min-height: 66.8vh;
+}
+
 .pointer {
     cursor: pointer;
 }
@@ -76,7 +80,7 @@ a.no-links-visible:active {
 }
 
 .card-img-search {
-    width: 10rem;
+    width: 20vh;
 }
 
 .table.no-cellpadding td {

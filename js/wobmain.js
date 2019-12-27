@@ -187,6 +187,8 @@ function ajaxeditdone() {
 }
 
 function ajaxaddtocart(book, count) {
+    let loading = $("#cartAddLoading");
+    loading.toggleClass("d-none");
     $.get("libaddtocart.php", { "book": book, "count": count }, (result) => {
         switch (result) {
             case "":
@@ -201,7 +203,9 @@ function ajaxaddtocart(book, count) {
             cart.html(result);
             $("#cartItems").text("Toplam " + $("#cartTotalItems").text() + " ürün");
             $("#cartValue").text($("#cartTotalValue").text() + " ₺");
-        }));
+        })).always(() => {
+            loading.toggleClass("d-none");
+        });
     });
 }
 
@@ -243,8 +247,8 @@ function ajaxremovefromcart(book) {
             case "":
                 $("#cart" + book).toggleClass("d-none");
                 $("#bigcart" + book).toggleClass("d-none");
-                cartTotal = cartTotal - parseInt($("#bt" + book).text());
-                cartItemsTotal = cartItemsTotal - parseInt($("#bc" + book).text());
+                cartTotal = cartTotal - parseFloat($("#bt" + book).text());
+                cartItemsTotal = cartItemsTotal - parseFloat($("#bc" + book).text());
                 $("#cartTotal").text(cartTotal);
                 $("#cartValue").text(cartTotal + " ₺");
                 $("#cartItems").text("Toplam " + cartItemsTotal + " ürün");

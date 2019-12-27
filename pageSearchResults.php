@@ -28,7 +28,7 @@ include_once "libsearch.php";
 <body>
     <?php include "templates/nav.php" ?>
 
-    <div class="container mt-5">
+    <div class="container container-fixed mt-5">
         <?php if ($books == null || count($books) == 0) { ?>
             <h1 class="display-4 text-center">Sonuç bulunamadı, başka bir şeyler aramayı deneyin.</h1>
         <?php } else foreach ($books as $book) { ?>

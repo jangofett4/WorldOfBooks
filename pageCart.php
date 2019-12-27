@@ -18,15 +18,8 @@ require_once "libssn.php";
 </head>
 
 <body>
-    <?php
-    include "templates/nav.php";
-    $con = DSConnection::open_or_get();
-    $logged = LibSSN::getnd("logged");
-    $cart = null;
-    if ($logged) $cart = LibSSN::getvnd("user_cart");
-    else $cart = LibSSN::getvnd("cart");
-    ?>
-    <div class="container">
+    <?php include "templates/nav.php"; ?>
+    <div class="container container-fixed">
         <?php if (count($cart) == 0) { ?>
             <div class="text-center">
                 <h1 class="display-3">Sepetinizde ürün yok</h1>
@@ -46,14 +39,7 @@ require_once "libssn.php";
                         </tr>
                     </thead>
                     <tbody>
-                        <?php
-                        /** @var int $id */
-                        $totalcount = 0;
-                        foreach ($cart as $id => $count) {
-                            $key = $con->key("Books", $id);
-                            $book = $con->lookup($key);
-                            $totalcount += $count;
-                        ?>
+                        <?php foreach ($cartbooks as $id => [$book, $count]) { ?>
                             <tr id="bigcart<?php echo $id ?>">
                                 <td class="align-middle"><img src="<?php echo $book["coverpath"] ?>" class="img-bigcart"></td>
                                 <td class="align-middle"> <?php echo $book["name"] ?></td>
@@ -70,7 +56,7 @@ require_once "libssn.php";
             </div>
             <div class="row">
                 <h5 class="col align-self-center">Toplam: <b id="cartTotal"><?php echo $total ?></b><b>₺</b></h5>
-                <div class="col align-self-center"><button class="btn btn-block btn-success">Ödemeye Devam <span class="ml-sm-2 fa fa-angle-right"></span> </button></div>
+                <div class="col align-self-center"><button class="btn btn-block btn-success" onclick="buy()">Ödemeye Devam <span class="ml-sm-2 fa fa-angle-right"></span> </button></div>
             </div>
         <?php } ?>
     </div>
@@ -78,170 +64,15 @@ require_once "libssn.php";
     <script>
         var cartTotal = <?php echo $total ?>;
         var cartItemsTotal = <?php echo $totalcount ?>;
-    </script>
-    <!-- <div class="container mt-5">
-        <div class="row p-2">
-            <div class="col">
-                <div class="col mb-3k mx-auto p-3">
-                    <?php
-                    $con = DSConnection::open_or_get();
-                    $ssncart = LibSSN::getvnd("cart");
-                    $logged = LibSSN::getnd("logged");
-                    ?>
-                    <?php if ((!$logged && count($ssncart) == 0) || ($logged && count(LibSSN::getvnd("user_cart")) == 0)) { ?>
-                        <div class="text-center">
-                            <h1 class="display-3">Sepetinizde ürün yok</h1>
-                            <h1 class="display-4">Alışverişe başlamak için <a href="index.php">tıklayın</a>!</h1>
-                        </div>
-                    <?php } else { ?>
-                        <div class="row">
-                            <div class="col-6 align-self-center"><b>ÜRÜN</b></div>
-                            <div class="col-6">
-                                <div class="row">
-                                    <div class="col align-self-center text-center"><b>ADET</b></div>
-                                    <div class="col align-self-center text-center"><b>BİRİM FİYAT</b></div>
-                                    <div class="col align-self-center text-center"><b>TOPLAM FİYAT</b></div>
-                                    <div class="col align-self-center text-center"><b>KALDIR</b></div>
-                                    <div class="row no-gutters border mb-sm-2" id="bigcart<?php echo $id ?>">
-                                        <div class="col-2 align-self-center">
-                                            <a href="pageBookInfo.php?book=<?php echo $id ?>"><img src="<?php echo $book["coverpath"] ?>" class="card-img card-img-search" alt="..."></a>
-                                        </div>
-                                        <div class="col-4 align-self-center">
-                                            <?php echo $book["name"] ?>
-                                        </div>
-                                        <div class="col-6 align-self-center">
-                                            <div class="card-body">
-                                                <div class="row ">
-                                                    <div class="col align-self-center text-center">
-                                                        <?php echo $count ?>
-                                                    </div>
-                                                    <div class="col align-self-center text-center">
-                                                        <h5 class="bold"><?php echo $book["cost"] ?> ₺</h5>
-                                                    </div>
-                                                    <div class="col align-self-center text-center">
-                                                        <h5 class="bold"><?php echo $book["cost"] * $count ?> ₺</h5>
-                                                    </div>
-                                                    <div class="col align-self-center text-center">
-                                                        <span>
-                                                            <a class="no-links-visible text-danger pointer" onclick="ajaxremovefromcart(<?php echo $id ?>)"><span class="fa fa-trash fa-2x"></span></a>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <?php
-                                $total = 0;
-                                $itemcount = 0;
-                                $totalcount = 0;
-                                if (!$logged && $ssncart != null) {
-                                    foreach ($ssncart as $id => $count) {
-                                        $itemcount++;
-                                        $totalcount += $count;
-                                        $key = $con->key("Books", $id);
-                                        $book = $con->lookup($key);
-                                        $total += $book["cost"] * $count;
-                                ?>
-                                        <div class="row no-gutters border mb-sm-2" id="bigcart<?php echo $id ?>">
-                                            <div class="col-2 align-self-center">
-                                                <img src="<?php echo $book["coverpath"] ?>" class="card-img card-img-search" alt="...">
-                                            </div>
-                                            <div class="col-4 align-self-center">
-                                                <?php echo $book["name"] ?>
-                                            </div>
-                                            <div class="col-6 align-self-center">
-                                                <div class="card-body">
-                                                    <div class="row ">
-                                                        <div class="col align-self-center text-center">
-                                                            <?php echo $count ?>
-                                                        </div>
-                                                        <div class="col align-self-center text-center">
-                                                            <h5 class="bold"><?php echo $book["cost"] ?> ₺</h5>
-                                                        </div>
-                                                        <div class="col align-self-center text-center">
-                                                            <h5 class="bold"><?php echo $book["cost"] * $count ?> ₺</h5>
-                                                        </div>
-                                                        <div class="col align-self-center text-center">
-                                                            <span>
-                                                                <a class="no-links-visible text-danger pointer" onclick="ajaxremovefromcart(<?php echo $id ?>)"><span class="fa fa-trash fa-2x"></span></a>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    <?php
-                                    }
-                                } elseif ($logged) {
-                                    $usercart = LibSSN::getvnd("user_cart");
-                                    foreach ($usercart as $id => $count) {
-                                        $itemcount++;
-                                        $totalcount += $count;
-                                        $key = $con->key("Books", $id);
-                                        $book = $con->lookup($key);
-                                        $total += $book["cost"] * $count;
-                                    ?>
-                                        <div class="row no-gutters border mb-sm-2" id="bigcart<?php echo $id ?>">
-                                            <div class="col-2 align-self-center">
-                                                <img src="<?php echo $book["coverpath"] ?>" class="card-img card-img-search" alt="...">
-                                            </div>
-                                            <div class="col-4 align-self-center">
-                                                <?php echo $book["name"] ?>
-                                            </div>
-                                            <div class="col-6 align-self-center">
-                                                <div class="card-body">
-                                                    <div class="row ">
-                                                        <div class="col align-self-center text-center">
-                                                            <?php echo $count ?>
-                                                        </div>
-                                                        <div class="col align-self-center text-center">
-                                                            <h5 class="bold"><?php echo $book["cost"] ?> ₺</h5>
-                                                        </div>
-                                                        <div class="col align-self-center text-center">
-                                                            <h5 class="bold"><?php echo $book["cost"] * $count ?> ₺</h5>
-                                                        </div>
-                                                        <div class="col align-self-center text-center">
-                                                            <span>
-                                                                <a class="no-links-visible text-danger pointer" onclick="ajaxremovefromcart(<?php echo $id ?>)"><span class="fa fa-trash fa-2x"></span></a>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                <?php
-                                    }
-                                }
-                                ?>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="w-25" style="float: right">
-                                            <div class="row">
-                                                <div class="col">
-                                                    <h5>Ara Toplam :</h5>
-                                                </div>
-                                                <div class="col">
-                                                    <h4><?php echo $total ?>
-                                                        ₺</h4>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <span class="w-100">
-                                                    <button type="button" class="btn btn-danger d-block w-100">SATIN AL</button>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    <?php } ?>
-                </div>
-            </div>
-        </div>
-    </div>-->
 
+        function buy() {
+            <?php if ($logged) { ?>
+                window.location.assign("pageBuy.php");
+            <?php } else { ?>
+                window.location.assign("pageLogin.php");
+            <?php } ?>
+        }
+    </script>
     <!-- Libraries -->
     <script src="js/jquery-3.4.1.js"></script>
     <script src="js/popper.min.js"></script>

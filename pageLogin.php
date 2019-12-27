@@ -23,7 +23,7 @@
 <body>
     <?php include "templates/nav.php" ?>
 
-    <div class="container" style="margin-top: 50px">
+    <div class="container container-fixed" style="margin-top: 50px">
 
         <div class="row">
             <div class="col border text-center p-5 m-1">
@@ -63,7 +63,7 @@
             </div>
         </div>
     </div>
-    <div style="margin-top: 16%"><?php include "templates/footer.php" ?></div>
+    <?php include "templates/footer.php" ?>
     <!-- Libraries -->
     <script src="js/jquery-3.4.1.js"></script>
     <script src="js/popper.min.js"></script>

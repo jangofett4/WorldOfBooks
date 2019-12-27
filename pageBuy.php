@@ -11,12 +11,30 @@
     <link rel="stylesheet" href="css/wob.css">
 
     <script src="js/wobmain.js?"></script>
+    <script>
+        var ajaxbuy = () => {
+            $.get("libbuy", {}, (result) => {
+                switch (result)
+                {
+                    case "ERR_NOT_LOGGED_IN":
+                        window.location.assign("index.php");
+                        break;
+                    case "ERR_CONNECTION":
+                        console.log("Unable to connect to cloud");
+                        break;
+                    default:
+                        window.location.assign("pageBuyComplete.php");
+                        break;
+                }
+            });
+        };
+    </script>
 </head>
 
 <body>
     <?php include "templates/nav.php"  ?>
     <div class="container mb-sm-5">
-        <form id="cardForm" class="w-100">
+        <form class="w-100" action="libbuy.php" id="baseform">
             <div class="row">
                 <div class="col mt-sm-5">
                     <fieldset>
@@ -34,7 +52,7 @@
                                 <input type="email" class="form-control" placeholder="E-Posta" required>
                             </div>
                             <div class="col">
-                                <input type="tel" class="form-control" placeholder="Cep Telefonu : 5xxxxxxxxx" pattern="[1-9]{3}[0-9]{3}[0-9]{2}[0-9]{2}" required>
+                                <input type="tel" class="form-control" placeholder="Cep Telefonu : 5xxxxxxxxx" pattern="[1-9]{1}[0-9]{2}[0-9]{3}[0-9]{2}[0-9]{2}" required>
                             </div>
                         </div>
                         <div class="form-row mb-sm-3">
@@ -72,7 +90,7 @@
                         </div>
                         <script>
                             var card = new Card({
-                                form: '#cardForm',
+                                form: '#baseform',
                                 container: '.card-wrapper',
 
                                 placeholders: {
@@ -88,15 +106,15 @@
                 <div class="col-sm-2 mt-sm-5">
                     <fieldset class="text-right border p-sm-2">
                         <legend>Sipariş Özeti</legend>
-                        <div><small>1 Ürün</small></div>
+                        <div><small><?php echo $totalcount; ?> Ürün</small></div>
                         <div><small>Ödenecek Tutar</small></div>
-                        <h4>30 ₺</h4>
+                        <h4><?php echo $total; ?> ₺</h4>
                         <button class="btn btn-primary d-block w-100">Onayla</button>
                     </fieldset>
                 </div>
             </div>
             <div class="row mb-sm-5">
-                <small>*Bilgiler toplanmıyor sadece görünüş amaçlıdır</small>
+                <small>*Bilgiler toplanmıyor sadece görünüş amaçlıdır. Yine de gerçek bilgiler girmemeniz tavsiye edilir.</small>
             </div>
         </form>
     </div>

@@ -2,7 +2,7 @@
 require_once "libcon.php";
 require_once "libssn.php";
 ?>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="mx-auto justify-content-md-center container">
         <div class="row col-lg justify-content-md-center">
             <div class="col-auto">
@@ -56,8 +56,11 @@ require_once "libssn.php";
                             Sepet
                         </button>
                         <div class="dropdown-menu text-center p-0" aria-labelledby="dropdownMenuButton" style="width: 23rem">
-                            <div id="navCart">    
+                            <div id="navCart">
                                 <?php require_once "cart.php" ?>
+                            </div>
+                            <div class="spinner-border text-primary mt-sm-2 d-none" role="status" id="cartAddLoading">
+                                <span class="sr-only">Loading...</span>
                             </div>
                             <div class="p-sm-4 text-center">
                                 <div class="col text-center">
@@ -81,3 +84,4 @@ require_once "libssn.php";
         </div>
     </div>
 </nav>
+<div class="mb-sm-5">&nbsp;</div>

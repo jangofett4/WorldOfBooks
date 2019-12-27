@@ -6,7 +6,10 @@ require_once "libssn.php";
 require_once "libcon.php";
 
 if (!LibSSN::getnd("logged"))
-    die("ERR_NOT_LOGGED_IN");
+{
+    header("Location: index.php");
+    exit();
+}
 
 $items = LibSSN::getvnd("user_cart");
 
@@ -31,25 +34,33 @@ try {
         $key = $con->key("Books", $book);
         $bookent = $con->lookup($key);
         $bought = $bookent["bought"];
+        if ($bought == null)
+            $bought = array();  
         if (!isset($bought[$userid]))
-            array_push($bought, $userid);
+            $bought[$userid] = 1;
         if (!isset($userbought[$book]))
-            array_push($userbought, $book);
+            $userbought[$book] = 1;
 
         $bookent["bought"] = $bought;
         /** @var Entity $bookent */
         $con->update($bookent);
 
-        array_push($buyhistory, [$book, $count]);
+        array_push($buyhistory, (object)array("book" => $book, "count" => $count));
     }
 
     $user["cart"] = array();
     $user["bought"] = $userbought;
     $user["buyhistory"] = $buyhistory;
+    LibSSN::setv("user_history", $buyhistory);
     
     /** @var Entity $user */
     $con->update($user);
     LibSSN::setv("user_cart", array());
+
+    header("Location: pageBuyComplete.php");
+    exit();
 } catch (Exception $e) {
-    die("ERR_CONNECTION");
+    LibSSN::set("ERR_CONNECTION");
+    header("Location: pageCart.php");
+    exit();
 }

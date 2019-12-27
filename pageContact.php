@@ -23,7 +23,7 @@
 <body>
     <?php include "templates/nav.php" ?>
 
-    <div class="container" >
+    <div class="container container-fixed" >
         <nav>
             <div class="nav nav-tabs row text-center border-bottom-0 mt-3" id="nav-tab" role="tablist">
                 <a class="col <?php if (!isset($_GET["contact"])) echo "active" ?> border-bottom mr-2 no-links-visible-pagecontact pb-2" id="nav-home-tab" data-toggle="tab" href="#about" role="tab" aria-controls="about" aria-selected="true">Hakkımızda</a>
@@ -77,7 +77,7 @@
             </div>
         </div>
     </div>
-    <div style="margin-top:15%;" ><?php include "templates/footer.php" ?></div>
+    <?php include "templates/footer.php" ?>
 
 
     <!-- Libraries -->
