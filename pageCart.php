@@ -39,7 +39,11 @@ require_once "libssn.php";
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($cartbooks as $id => [$book, $count]) { ?>
+                        <?php
+                        foreach ($cartbooks as $ct) {
+                            $book = $ct->book;
+                            $count = $ct->count;
+                        ?>
                             <tr id="bigcart<?php echo $id ?>">
                                 <td class="align-middle"><img src="<?php echo $book["coverpath"] ?>" class="img-bigcart"></td>
                                 <td class="align-middle"> <?php echo $book["name"] ?></td>

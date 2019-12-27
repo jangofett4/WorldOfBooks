@@ -21,7 +21,7 @@ foreach ($cart as $id => $count) {
     $totalcount += $count;
     $key = $con->key("Books", $id);
     $book = $con->lookup($key);
-    $cartbooks[$id] = [$book, $count];
+    $cartbooks[$id] = (object)array("book" => $book, "count" => $count);
     $total += $book["cost"] * $count;
     if ($itemcount < 4) {
 ?>
