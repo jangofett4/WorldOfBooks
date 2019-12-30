@@ -220,7 +220,7 @@ function ajaxratebook(book, star) {
     $.get("librate.php", { "book": book, "rating": star }, (result) => {
         switch (result) {
             case "ERR_NOT_LOGGED_IN":
-                window.location.append("login.php");
+                window.location.assign("login.php");
                 break;
             case "ERR_EMPTY_INPUT":
                 console.log("User left the input empty");
@@ -235,6 +235,7 @@ function ajaxratebook(book, star) {
                 console.log("Unable to connect to cloud");
                 break;
             case "":
+                console.log("Rate successful");
                 /* TODO: handle rating */
                 break;
         }
@@ -295,8 +296,8 @@ function ajaxlogin(email, password) {
 }
 
 function ajaxregister(name, surname, email, emailre, password, passwordre) {
-    var domemailre = $("#inputEmailRe");
-    var dompasswordre = $("#inputPasswordRe");
+    let domemailre = $("#inputEmailRe");
+    let dompasswordre = $("#inputPasswordRe");
 
     domemailre.popover("dispose");
     dompasswordre.popover("dispose");

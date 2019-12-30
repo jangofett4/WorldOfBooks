@@ -23,10 +23,8 @@ require_once "libssn.php";
     <link rel="stylesheet" href="css/all.css">
     <link rel="stylesheet" href="css/wob.css">
 
+    <script src="js/jquery-3.4.1.js"></script>
     <script src="js/wobmain.js?"></script>
-    <script>
-        
-    </script>
 </head>
 
 <body>
@@ -35,7 +33,7 @@ require_once "libssn.php";
     if (isset($_GET["book"])) {
         $con = DSConnection::open_or_get();
         $bookid = $_GET["book"];
-        $key = $con->key("Books", $_GET["book"]);
+        $key = $con->key("Books", $bookid);
         $book = $con->lookup($key);
     ?>
         <div class="container container-fixed" style="margin-top: 50px">
@@ -57,9 +55,9 @@ require_once "libssn.php";
                     ?>
                     <?php for ($i = 0; $i < 5; $i++) { ?>
                         <?php if ($i < $calcrate) { ?>
-                            <div onmouseout="rating(<?php echo $calcrate ?>)" onmouseover="rating(<?php echo $i + 1; ?>)"><span id="_<?php echo $i + 1 ?>" class="fa fa-star pointer col px-sm-1 hover-checked"></span></div>
+                            <div onmouseout="rating(<?php echo $calcrate ?>)" onmouseover="rating(<?php echo $i + 1; ?>)" onclick="ajaxratebook(<?php echo $bookid ?>, <?php echo $i + 1; ?>)"><span id="_<?php echo $i + 1 ?>" class="fa fa-star pointer col px-sm-1 hover-checked"></span></div>
                         <?php } else { ?>
-                            <div onmouseout="rating(<?php echo $calcrate ?>)" onmouseover="rating(<?php echo $i + 1; ?>)"><span id="_<?php echo $i + 1 ?>" class="fa fa-star pointer col px-sm-1"></span></div>
+                            <div onmouseout="rating(<?php echo $calcrate ?>)" onmouseover="rating(<?php echo $i + 1; ?>)" onclick="ajaxratebook(<?php echo $bookid ?>, <?php echo $i + 1; ?>)"><span id="_<?php echo $i + 1 ?>" class="fa fa-star pointer col px-sm-1"></span></div>
                         <?php } ?>
                     <?php } ?>
                 </div>
@@ -103,7 +101,6 @@ require_once "libssn.php";
 
 
     <!-- Libraries -->
-    <script src="js/jquery-3.4.1.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.js"></script>
     <script>
