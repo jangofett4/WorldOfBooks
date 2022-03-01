@@ -1,8 +1,7 @@
 <?php
 
 require_once "libcon.php";
-
-session_start();
+require_once "libssn.php";
 
 if (isset($_SESSION["logged"]))
     die("ERR_ALREADY_LOGGED"); // TODO: might send to main page instead
@@ -37,8 +36,8 @@ $user->set([
     "cart"      => array(),
     "bought"    => array(),
     "buyhistory"=> array(),
-    "fwdip"     => $_SERVER['HTTP_X_FORWARDED_FOR'],
-    "remoteip"  => $_SERVER['REMOTE_ADDR'],
+    /*"fwdip"     => $_SERVER['HTTP_X_FORWARDED_FOR'],
+    "remoteip"  => $_SERVER['REMOTE_ADDR'],*/
 ]);
 $con->insert($user);
 

@@ -52,6 +52,7 @@ use Google\Cloud\Datastore\Entity;
 </head>
 
 <body>
+    <?php include "templates/nav.php" ?>
     <?php
 
     $logged = false;
@@ -485,6 +486,9 @@ use Google\Cloud\Datastore\Entity;
                     </div>
                 </div>
             </div>
+        </div>
+        <div>
+        <button type="button" class="btn btn-secondary px-5 btn-block" onclick="ajaxpanellogout()">Çıkış Yap</button>
         </div>
         </div>
     <?php } ?>

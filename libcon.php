@@ -2,7 +2,7 @@
 
 require_once "vendor/autoload.php";
 require_once "libssn.php";
-
+putenv("GOOGLE_APPLICATION_CREDENTIALS=./worldofbooks-keys.json");
 use Google\Cloud\Datastore\DatastoreClient;
 
 class DSConnection {
@@ -21,7 +21,7 @@ class DSConnection {
             }
 
             DSConnection::$connection = new DatastoreClient([
-                "keyFile" => $keys
+                'projectId' => "infra-bedrock-307015"
             ]);
         }
 

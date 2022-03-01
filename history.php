@@ -8,7 +8,6 @@ if (!LibSSN::getnd("logged")) {
 }
 
 $hist = LibSSN::getvnd("user_history");
-
 ?>
 <!doctype html>
 <html lang="tr">
@@ -54,9 +53,9 @@ $hist = LibSSN::getvnd("user_history");
                     <tbody>
                         <?php
                         /** @var int $id */
-                        foreach ($hist as $elem) {
-                            $bookid = $elem["book"];
-                            $count = $elem["count"];
+                        foreach ($hist as $elem2) {
+                            $bookid = $elem2->book;
+                            $count = $elem2->count;
                             $key = $con->key("Books", $bookid);
                             $book = $con->lookup($key);
                         ?>
@@ -76,6 +75,7 @@ $hist = LibSSN::getvnd("user_history");
         <?php } ?>
     </div>
     <?php include "templates/footer.php" ?>
+    
     <script src="js/jquery-3.4.1.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.js"></script>

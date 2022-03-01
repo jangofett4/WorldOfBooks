@@ -270,6 +270,12 @@ function ajaxlogout() {
     });
 }
 
+function ajaxpanellogout() {
+    $.get("libadminlogout.php", () => {
+        window.location.assign("panel.php");
+    });
+}
+
 function ajaxlogin(email, password) {
     let modal = $("#loadingModal");
     modal.modal();
